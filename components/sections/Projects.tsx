@@ -43,55 +43,56 @@ export function Projects() {
 
     return (
         <section ref={targetRef} className="relative h-[300vh] bg-black">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0 sticky top-0 h-screen overflow-hidden">
-                <Image
-                    src="/assets/project-bg.jpg"
-                    alt="Projects Background"
-                    fill
-                    className="object-cover"
-                    quality={100}
-                />
-                <div className="absolute inset-0 bg-black/20" /> {/* Slight overlay */}
-            </div>
+            <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/assets/project-bg.jpg"
+                        alt="Projects Background"
+                        fill
+                        className="object-cover"
+                        quality={100}
+                    />
+                    <div className="absolute inset-0 bg-black/40" /> {/* Overlay */}
+                </div>
 
-            <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-                <div className="absolute top-10 left-0 right-0 z-10">
+                {/* Content */}
+                <div className="relative z-10 w-full">
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-6xl font-bold text-center text-white"
+                        className="text-4xl md:text-6xl font-bold text-center text-white mb-12"
                     >
                         Projects
                     </motion.h2>
-                </div>
 
-                <motion.div style={{ x }} className="flex gap-12 px-12 md:px-24">
-                    {projects.map((project, index) => (
-                        <div
-                            key={index}
-                            className="group relative h-[60vh] w-[85vw] md:w-[60vw] flex-shrink-0 overflow-hidden rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors duration-300"
-                        >
-                            <div className={`absolute inset-0 ${project.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
+                    <motion.div style={{ x }} className="flex gap-12 px-12 md:px-24 items-center">
+                        {projects.map((project, index) => (
+                            <div
+                                key={index}
+                                className="group relative h-[70vh] w-[90vw] md:w-[70vw] flex-shrink-0 overflow-hidden rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors duration-300"
+                            >
+                                <div className={`absolute inset-0 ${project.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
 
-                            <div className="relative h-full flex flex-col md:flex-row p-8 md:p-12 gap-8">
-                                {/* Image Placeholder */}
-                                <div className={`w-full md:w-1/2 h-1/2 md:h-full rounded-2xl ${project.color} opacity-80 shadow-2xl`} />
+                                <div className="relative h-full flex flex-col md:flex-row p-8 md:p-12 gap-8">
+                                    {/* Image Placeholder */}
+                                    <div className={`w-full md:w-1/2 h-1/2 md:h-full rounded-2xl ${project.color} opacity-80 shadow-2xl`} />
 
-                                <div className="flex flex-col justify-center md:w-1/2">
-                                    <h3 className="text-4xl md:text-6xl font-bold text-white mb-6">{project.title}</h3>
-                                    <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-                                        {project.description}
-                                    </p>
-                                    <button className="mt-8 w-fit px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 text-lg font-medium">
-                                        View Case Study
-                                    </button>
+                                    <div className="flex flex-col justify-center md:w-1/2">
+                                        <h3 className="text-4xl md:text-6xl font-bold text-white mb-6">{project.title}</h3>
+                                        <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                                            {project.description}
+                                        </p>
+                                        <button className="mt-8 w-fit px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 text-lg font-medium">
+                                            View Case Study
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

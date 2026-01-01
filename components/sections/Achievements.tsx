@@ -31,7 +31,7 @@ import Image from 'next/image';
 
 export function Achievements() {
     return (
-        <section className="min-h-screen flex flex-col justify-center py-20 bg-black relative overflow-hidden">
+        <section id="achievements" className="min-h-screen flex flex-col justify-center py-20 bg-black relative overflow-hidden">
             {/* Background Image - Zoomed and Darkened */}
             <div className="absolute inset-0 z-0">
                 <Image

@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 export function Mission() {
     return (
-        <section className="relative min-h-screen w-full flex flex-col items-center justify-center py-20 overflow-hidden">
+        <section id="mission" className="relative min-h-screen w-full flex flex-col items-center justify-center py-20 overflow-hidden">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image

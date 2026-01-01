@@ -42,7 +42,7 @@ export function Projects() {
     const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
     return (
-        <section ref={targetRef} className="relative h-[300vh] bg-black">
+        <section id="projects" ref={targetRef} className="relative h-[300vh] bg-black">
             <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">

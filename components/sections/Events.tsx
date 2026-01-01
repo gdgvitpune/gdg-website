@@ -24,7 +24,7 @@ const events = [
 
 export function Events() {
     return (
-        <section className="py-20 bg-black relative">
+        <section id="events" className="py-20 bg-black relative">
             {/* Starry background */}
             <div className="absolute inset-0 z-0 opacity-30" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
 

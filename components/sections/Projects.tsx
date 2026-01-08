@@ -42,19 +42,10 @@ export function Projects() {
     const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
     return (
-        <section ref={targetRef} className="relative h-[300vh] bg-black">
+        <section ref={targetRef} className="relative h-[300vh] ">
             <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
                 {/* Background Image */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/assets/project-bg.jpg"
-                        alt="Projects Background"
-                        fill
-                        className="object-cover"
-                        quality={100}
-                    />
-                    <div className="absolute inset-0 bg-black/40" /> {/* Overlay */}
-                </div>
+               
 
                 {/* Content */}
                 <div className="relative z-10 w-full">

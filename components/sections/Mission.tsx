@@ -1,27 +1,19 @@
-
 'use client';
 
 import { motion } from 'framer-motion';
 import { GlassCard } from '../ui/GlassCard';
-
-import Image from 'next/image';
+import { CustomTypewriter } from '../ui/CustomTypewriter';
 
 export function Mission() {
+    const missionText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+
     return (
-        <section className="relative min-h-screen w-full flex flex-col items-center justify-center py-20 overflow-hidden">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/assets/mission-bg.jpg"
-                    alt="Mission Background"
-                    fill
-                    className="object-cover"
-                    quality={100}
-                />
-                <div className="absolute inset-0 bg-black/40" /> {/* Overlay for readability */}
+<section className="relative min-h-screen w-full flex flex-col items-center justify-center py-20 overflow-hidden">
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="absolute inset-0 bg-black/40" />
             </div>
 
-            <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+            <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pointer-events-none">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -36,11 +28,14 @@ export function Mission() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
+                    className="pointer-events-auto"
                 >
-                    <GlassCard className="p-8 md:p-12 bg-orange-950/20 border-orange-500/20">
-                        <p className="text-lg md:text-2xl text-gray-200 leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                    <GlassCard className="p-8 md:p-12 bg-orange-950/20 border-orange-500/20 min-h-[300px] flex items-center justify-center">
+                        <CustomTypewriter 
+                            text={missionText}
+                            speed={30}
+                            className="text-lg md:text-2xl text-gray-200 leading-relaxed"
+                        />
                     </GlassCard>
                 </motion.div>
             </div>

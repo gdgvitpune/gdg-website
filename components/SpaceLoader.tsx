@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // Reusable SpaceLoader Component
 interface SpaceLoaderProps {
@@ -8,154 +8,148 @@ interface SpaceLoaderProps {
 }
 
 const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
-  const [progress, setProgress] = useState(0);
+  const [showVideo, setShowVideo] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
-  useEffect(() => {
-    const interval = 16; // ~60fps
-    const increment = (interval / duration) * 100;
-
-    const timer = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          setTimeout(() => {
-            if (onComplete) onComplete();
-          }, 500);
-          return 100;
-        }
-        return prev + increment;
-      });
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [duration, onComplete]);
-
-  // Calculate rocket position on curved path
-  const getRocketPosition = (progress) => {
-    const t = progress / 100;
-    const startX = 15;
-    const endX = 85;
-    const startY = 20;
-    const endY = 20;
-    const controlY = -10;
-
-    const x = startX + (endX - startX) * t;
-    const y = startY + 4 * controlY * t * (1 - t) + endY * t * t;
-
-    return { x, y };
+  const handleMissionStart = () => {
+    setShowVideo(true);
   };
 
-  const rocketPos = getRocketPosition(progress);
-  const numBars = 12;
-  const filledBars = Math.floor((progress / 100) * numBars);
+  const handleVideoEnd = () => {
+    setFadeOut(true);
+    if (onComplete) {
+      setTimeout(onComplete, 1000); // Wait for fade out animation
+    }
+  };
 
   return (
-    <div className="fixed inset-0 overflow-hidden">
-      {/* Space GIF Background */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/space.gif"
-          alt="Space background"
-          className="w-full h-full object-cover"
-          style={{ imageRendering: 'pixelated' }}
-        />
-      </div>
-      
-      {/* Cockpit PNG Overlay */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        <img
-          src="/spaceship.png"
-          alt="Cockpit"
-          className="w-full h-full object-cover"
-          style={{ imageRendering: 'pixelated' }}
-        />
-      </div>
+    <div className="fixed inset-0 overflow-hidden bg-black">
+      <div className={`absolute inset-0 transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
+        {/* Space GIF Background - Shows until video plays */}
+        {!showVideo && (
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/space.gif"
+              alt="Space background"
+              className="w-full h-full object-cover"
+              style={{ imageRendering: 'pixelated' }}
+            />
+          </div>
+        )}
 
-      {/* CRT Scanline Effect */}
-      <div className="absolute inset-0 z-15 pointer-events-none scanlines"></div>
+        {/* Video Player - Full Screen Behind Everything */}
+        {showVideo && (
+          <div className="absolute inset-0 z-0">
+            <video
+              src="/space.mp4"
+              autoPlay
+              onEnded={handleVideoEnd}
+              className="w-full h-full object-cover"
+              style={{ imageRendering: 'pixelated' }}
+            />
+          </div>
+        )}
+        
+        {/* Cockpit PNG Overlay - Always visible */}
+        <div className="absolute inset-0 z-10 pointer-events-none">
+          <img
+            src="/spaceship.png"
+            alt="Cockpit"
+            className="w-full h-full object-cover scale-105"
+            style={{ imageRendering: 'pixelated' }}
+          />
+        </div>
 
-      {/* CRT Screen Content */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center">
-        <div className="relative w-[800px] h-[450px] flex items-center justify-center translate-y-40">
-          <div className="w-full h-full flex flex-col items-center justify-center px-15">
-            {/* Earth, Rocket, Black Hole Animation */}
-            <div className="relative w-full h-32 mb-8">
-              {/* Earth - Top Left */}
-              <div className="absolute" style={{
-                left: '20%',
-                top: '20%',
-                transform: 'translate(-50%, -50%)'
-              }}>
-                <img
-                  src="/earth.png"
-                  alt="Earth"
-                  className="w-65 h-65 object-contain"
-                  style={{ imageRendering: 'pixelated' }}
-                />
+        {/* CRT Scanline Effect */}
+        <div className="absolute inset-0 z-15 pointer-events-none scanlines"></div>
+
+        {/* Content Layer */}
+        <div className="absolute inset-0 z-20 flex items-center justify-center">
+          <div className="relative w-[800px] h-[450px] flex items-center justify-center translate-y-35">
+            {!showVideo ? (
+              /* Mission Briefing Terminal */
+              <div className="w-full h-full flex flex-col items-start justify-center px-40 space-y-4">
+                <div className="terminal-text text-[#a9c7a9] text-[8px] leading-relaxed">
+                  <div className="mb-4">
+                    <span className="text-[#a9c7a9]">{'>'}</span> INITIALIZING MISSION PROTOCOL...
+                  </div>
+                  <div className="mb-4">
+                    <span className="text-[#a9c7a9]">{'>'}</span> COORDINATES LOCKED
+                  </div>
+                  <div className="mb-8">
+                    <span className="text-[#a9c7a9]">{'>'}</span> DESTINATION: EVENT HORIZON
+                  </div>
+                  
+                  <div className="mb-6 pl-4 border-l-2 border-[#a9c7a9] text-[8px]">
+                    <p className="mb-3">MISSION BRIEFING:</p>
+                    <p className="mb-3">
+                      You are about to embark on a journey to the most
+                    </p>
+                    <p className="mb-3">
+                      mysterious phenomenon in the known universe - a
+                    </p>
+                    <p className="mb-3">
+                      supermassive black hole. Beyond the event horizon,
+                    </p>
+                    <p className="mb-3">
+                      the laws of physics as we know them cease to exist.
+                    </p>
+                    <p className="mb-3">
+                      Time dilates. Space warps. Reality bends.
+                    </p>
+                    <p>
+                      There is no return from this voyage.
+                    </p>
+                  </div>
+
+                  <div className="mb-3 text-[8px]">
+                    <span className="text-[#a9c7a9]">{'>'}</span> AWAITING CONFIRMATION...
+                  </div>
+                </div>
+
+                {/* Game-style Option */}
+                <div className="w-full flex items-center space-x-3 pl-4">
+                  <span className="terminal-text text-[#a9c7a9] text-sm">{'>'}</span>
+                  <button
+                    onClick={handleMissionStart}
+                    className="terminal-text text-[#a9c7a9] text-[8px] bg-transparent border-2 border-[#a9c7a9] px-6 py-2 hover:bg-[#a9c7a9] hover:text-black transition-all duration-200 cursor-pointer uppercase tracking-wider"
+                  >
+                    [ LET'S GO ]
+                  </button>
+                </div>
               </div>
-
-              {/* Black Hole - Top Right */}
-              <div className="absolute" style={{
-                left: '80%',
-                top: '30%',
-                transform: 'translate(-50%, -50%)'
-              }}>
-                <img
-                  src="/blackhole.jpg"
-                  alt="Black Hole"
-                  className="w-80 h-80 object-contain"
-                  style={{ imageRendering: 'pixelated' }}
-                />
+            ) : (
+              /* Status Text During Video */
+              <div className="w-full h-full flex flex-col items-start justify-center px-40">
+                <div className="terminal-text text-[#a9c7a9] text-[8px] leading-relaxed">
+                  <div className="mb-4">
+                    <span className="text-[#a9c7a9]">{'>'}</span> MISSION INITIATED...
+                  </div>
+                  <div className="mb-4">
+                    <span className="text-[#a9c7a9]">{'>'}</span> ENTERING WARP DRIVE
+                  </div>
+                  <div className="mb-4">
+                    <span className="text-[#a9c7a9]">{'>'}</span> APPROACHING EVENT HORIZON...
+                  </div>
+                  <div className="mb-4 animate-pulse">
+                    <span className="text-[#a9c7a9]">{'>'}</span> SYSTEMS NOMINAL
+                  </div>
+                </div>
               </div>
-
-              {/* Rocket - Moving along path */}
-              <div
-                className="absolute transition-all duration-100 ease-linear"
-                style={{
-                  left: `${rocketPos.x}%`,
-                  top: `${rocketPos.y + 20}%`,
-                  transform: `translate(-50%, -50%) rotate(${progress * 0.3}deg)`,
-                }}
-              >
-                <img
-                  src="/rocket.png"
-                  alt="Rocket"
-                  className="w-12 h-12 object-contain"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-              </div>
-            </div>
-
-            {/* TRANSFERRING Text */}
-            <div className="text-[#a9c7a9] text-2xl font-mono tracking-widest mb-6 pixel-text">
-              TRANSFERRING...
-            </div>
-
-            {/* Classic Windows-style Progress Bar */}
-            <div className="w-full max-w-md bg-gray-900 rounded-none p-1 border-4 border-[#a9c7a9] shadow-lg shadow-[#00ff00]/50">
-              <div className="flex gap-1 h-10 bg-black p-1">
-                {[...Array(numBars)].map((_, index) => (
-                  <div
-                    key={index}
-                    className={`flex-1 transition-all duration-150 ${
-                      index < filledBars
-                        ? 'bg-[#a9c7a9] shadow-sm shadow-[#95ad95]'
-                        : 'bg-gray-800'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Percentage */}
-            <div className="text-[#a9c7a9] text-xl font-mono mt-6 pixel-text tracking-wider">
-              {Math.floor(progress)}% LOADING...
-            </div>
+            )}
           </div>
         </div>
       </div>
 
       <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        .terminal-text {
+          font-family: 'Press Start 2P', monospace;
+          text-shadow: 0 0 10px rgba(169, 199, 169, 0.8);
+          line-height: 1.8;
+        }
+
         .scanlines {
           background: linear-gradient(
             to bottom,
@@ -173,11 +167,6 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
           100% {
             background-position: 0 100%;
           }
-        }
-
-        .pixel-text {
-          text-shadow: 2px 2px 0px rgba(0, 255, 0, 0.5);
-          letter-spacing: 0.2em;
         }
       `}</style>
     </div>

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
-import ExpandableNavbar from '@/components/ExpandableNavbar';
+import ExpandableNavbar from '@/components/RollingExpandableNavbar2';
 
 // Register the plugin
 gsap.registerPlugin(ScrambleTextPlugin);

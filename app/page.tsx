@@ -21,7 +21,7 @@ export default function Home() {
       {/* Galaxy Background - Fixed position covering entire viewport */}
       <div className="fixed inset-0 w-full h-full z-0">
         <Galaxy
-          mouseRepulsion={true}
+          mouseRepulsion={false}
           transparent={false}
           starSpeed={0.8}
           density={1}

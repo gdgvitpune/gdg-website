@@ -9,7 +9,8 @@ export function Footer() {
 <footer className="relative overflow-hidden bg-black pt-20 shadow-[0px_-17px_20px_2px_#00000024]">
   
   {/* Background image layer */}
-<img
+  {/* eslint-disable-next-line @next/next/no-img-element */}
+  <img
   src="/footer-bg.jpg"
   alt=""
   className="
@@ -38,6 +39,7 @@ export function Footer() {
           {/* Brand and mission */}
           <div className="md:col-span-1 lg:col-span-5">
             <div className="flex items-center space-x-2 mb-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/gdgLogo.svg"
                 alt="GDGoC Logo"
@@ -190,6 +192,7 @@ export function Footer() {
       >
 
         <div className="w-full overflow-hidden pointer-events-none h-65 mask-b-from-30% z-[2]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="h-[16rem] lg:hidden relative -bottom-[0.1rem] opacity-20 select-none mx-auto" src="/gdgIcon.svg" alt="GDG Logo" />
           <p className="relative -bottom-[0.1rem] text-white text-[16rem] text-center font-extrabold opacity-[22%] select-none hidden lg:block">
           GDGoC VIT

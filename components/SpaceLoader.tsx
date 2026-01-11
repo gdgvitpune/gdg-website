@@ -31,7 +31,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
   }, [duration, onComplete]);
 
   // Calculate rocket position on curved path
-  const getRocketPosition = (progress) => {
+  const getRocketPosition = (progress: number) => {
     const t = progress / 100;
     const startX = 15;
     const endX = 85;
@@ -53,6 +53,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
     <div className="fixed inset-0 overflow-hidden">
       {/* Space GIF Background */}
       <div className="absolute inset-0 z-0">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/space.gif"
           alt="Space background"
@@ -63,6 +64,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
       
       {/* Cockpit PNG Overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/spaceship.png"
           alt="Cockpit"
@@ -86,6 +88,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
                 top: '20%',
                 transform: 'translate(-50%, -50%)'
               }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/earth.png"
                   alt="Earth"
@@ -100,6 +103,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
                 top: '30%',
                 transform: 'translate(-50%, -50%)'
               }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/blackhole.jpg"
                   alt="Black Hole"
@@ -117,6 +121,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
                   transform: `translate(-50%, -50%) rotate(${progress * 0.3}deg)`,
                 }}
               >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/rocket.png"
                   alt="Rocket"

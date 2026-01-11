@@ -90,6 +90,7 @@ export default function ExpandableNavbar() {
       transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
       <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-all duration-300 ease-in-out">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/gdg.png" alt="GDG Logo" className="w-15 h-7" />
       </div>
     </motion.button>

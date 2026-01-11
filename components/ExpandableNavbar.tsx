@@ -79,7 +79,8 @@ export default function ExpandableNavbar() {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-15 h-15 rounded-full bg-black flex items-center justify-center shadow-lg shadow-black/50 border-2 border-white/20 group"
         >
           {/* Image with hover highlight */}
-          <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-all duration-300 ease-in-out">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-all duration-300 ease-in-out">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/gdg.png" alt="GDG Logo" className="w-15 h-7" />
           </div>
         </button>

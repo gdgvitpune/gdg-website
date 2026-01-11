@@ -31,7 +31,7 @@ const projects = [
     }
 ];
 
-import Image from 'next/image';
+// removed unused Image import to satisfy lint
 
 export function Projects() {
     const targetRef = useRef<HTMLDivElement>(null);

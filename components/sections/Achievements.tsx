@@ -27,8 +27,6 @@ const achievements = [
     }
 ];
 
-import Image from 'next/image';
-
 export function Achievements() {
     return (
         <section id="achievements" className="min-h-screen flex flex-col justify-center py-20  relative overflow-hidden">

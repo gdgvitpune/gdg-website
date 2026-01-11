@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapsing Cards</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        .spacer {
+            height: 100vh;
+        }
+
+        .services-section {
+            padding: 0;
+        }
+
+        .section-header {
+            padding: 4rem 4rem 2rem;
+            color: white;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .cards-container {
+            position: relative;
+        }
+
+        .card {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            margin-bottom: 100vh;
+        }
+        
+        .card:last-child {
+            margin-bottom: 0;
+        }
+
+        .card-inner {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-right: 4rem;
+        }
+
+        .card-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .card-description {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .card-features {
+            list-style: none;
+            font-size: 0.95rem;
+            line-height: 2;
+            opacity: 0.9;
+        }
+
+        .card-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .card-visual {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 3/2;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .card-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Card specific colors */
+        .card:nth-child(1) .card-inner {
+            background: linear-gradient(135deg, #c8b1e4 0%, #b89dd9 100%);
+            color: #1a1a1a;
+        }
+
+        .card:nth-child(2) .card-inner {
+            background: linear-gradient(135deg, #ffd966 0%, #ffcd3c 100%);
+            color: #1a1a1a;
+        }
+
+        .card:nth-child(3) .card-inner {
+            background: linear-gradient(135deg, #ff9999 0%, #ff7f7f 100%);
+            color: #1a1a1a;
+        }
+
+        .card:nth-child(4) .card-inner {
+            background: linear-gradient(135deg, #a8e6cf 0%, #8dd9bf 100%);
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 968px) {
+            .card-inner {
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            .card-left {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+
+            .card-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spacer"></div>
+
+    <section class="services-section">
+        <div class="section-header">
+            <h2 class="section-title">Services</h2>
+        </div>
+
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-left">
+                        <h3 class="card-title">Brand Strategy</h3>
+                        <p class="card-description">
+                            It's the core of your company's identity. It guides all business decisions, ensuring a consistent and impactful presence in the market.
+                        </p>
+                        <ul class="card-features">
+                            <li>Research & Insights</li>
+                            <li>Unique Ways</li>
+                            <li>Purpose, Mission, Vision</li>
+                            <li>Value Proposition</li>
+                            <li>Personality Traits</li>
+                            <li>Verbal Identity</li>
+                            <li>Naming</li>
+                        </ul>
+                    </div>
+                    <div class="card-right">
+                        <div class="card-visual">
+                            <div style="width: 100%; height: 100%; background: rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                Strategy Visual
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-left">
+                        <h3 class="card-title">Visual Identity</h3>
+                        <p class="card-description">
+                            Visual identity is the unique visual language of your brand, creating memorable impressions and emotional connections with your audience.
+                        </p>
+                        <ul class="card-features">
+                            <li>Logotype, Typography & Colour</li>
+                            <li>Illustrations & 3D</li>
+                            <li>Photography Art Direction</li>
+                            <li>Brand Book & Guidelines</li>
+                            <li>Animations</li>
+                            <li>Video Production</li>
+                            <li>Product Design</li>
+                        </ul>
+                    </div>
+                    <div class="card-right">
+                        <div class="card-visual">
+                            <div style="width: 100%; height: 100%; background: rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                Identity Visual
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-left">
+                        <h3 class="card-title">Website</h3>
+                        <p class="card-description">
+                            Our website design services blend innovation and creativity to deliver user-centric solutions that elevate your brand and engage your audience.
+                        </p>
+                        <ul class="card-features">
+                            <li>UX Design</li>
+                            <li>User Testing</li>
+                            <li>Product Prototype</li>
+                            <li>Mobile UI</li>
+                            <li>Software UI design</li>
+                            <li>Web app design</li>
+                            <li>Interaction design</li>
+                        </ul>
+                    </div>
+                    <div class="card-right">
+                        <div class="card-visual">
+                            <div style="width: 100%; height: 100%; background: rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                Website Visual
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-left">
+                        <h3 class="card-title">Product</h3>
+                        <p class="card-description">
+                            Our product design services focus on creating intuitive and aesthetically pleasing products that resonate with your audience and stand out in the market.
+                        </p>
+                        <ul class="card-features">
+                            <li>UX Design</li>
+                            <li>User Testing</li>
+                            <li>Product Prototype</li>
+                            <li>Mobile UI</li>
+                            <li>Software UI design</li>
+                            <li>Web app design</li>
+                            <li>Interaction design</li>
+                        </ul>
+                    </div>
+                    <div class="card-right">
+                        <div class="card-visual">
+                            <div style="width: 100%; height: 100%; background: rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                Product Visual
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const cards = document.querySelectorAll('.card');
+        const cardHeight = 120; // Height of collapsed card showing just the title
+
+        cards.forEach((card, i) => {
+            const inner = card.querySelector('.card-inner');
+            const description = card.querySelector('.card-description');
+            const features = card.querySelector('.card-features');
+            const visual = card.querySelector('.card-right');
+            
+            ScrollTrigger.create({
+                trigger: card,
+                start: 'top top',
+                end: 'bottom top',
+                pin: true,
+                pinSpacing: false,
+                scrub: 1,
+                // markers: true, // Uncomment to debug
+                onUpdate: (self) => {
+                    const progress = self.progress;
+                    
+                    // Calculate how far up this card should move when collapsed
+                    const moveUp = (window.innerHeight - cardHeight) - (i * cardHeight);
+                    
+                    // Move card up smoothly
+                    gsap.to(inner, {
+                        y: -progress * moveUp,
+                        duration: 0,
+                        ease: 'none'
+                    });
+                    
+                    // Fade out content
+                    const fadeStart = 0.3;
+                    const fadeProgress = Math.max(0, (progress - fadeStart) / (1 - fadeStart));
+                    
+                    gsap.to([description, features, visual], {
+                        opacity: 1 - fadeProgress,
+                        duration: 0,
+                        ease: 'none'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

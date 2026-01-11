@@ -31,18 +31,7 @@ import Image from 'next/image';
 
 export function Achievements() {
     return (
-        <section id="achievements" className="min-h-screen flex flex-col justify-center py-20 bg-black relative overflow-hidden">
-            {/* Background Image - Zoomed and Darkened */}
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/assets/mission-bg.jpg"
-                    alt="Achievements Background"
-                    fill
-                    className="object-cover scale-125"
-                    quality={100}
-                />
-                <div className="absolute inset-0 bg-black/80" /> {/* Dark overlay */}
-            </div>
+        <section id="achievements" className="min-h-screen flex flex-col justify-center py-20  relative overflow-hidden">
 
             <div className="container mx-auto px-4 relative z-10">
                 <motion.h2

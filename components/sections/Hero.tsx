@@ -5,7 +5,6 @@ import { gsap } from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import ExpandableNavbar from '@/components/RollingExpandableNavbar2';
 
-// Register the plugin
 gsap.registerPlugin(ScrambleTextPlugin);
 
 export function Hero() {
@@ -14,7 +13,6 @@ export function Hero() {
     const taglineRef = useRef(null);
 
     useEffect(() => {
-        // Scramble "Google Developer Groups" - slower
         gsap.to(gdgRef.current, {
             duration: 2.5,
             scrambleText: {
@@ -26,7 +24,6 @@ export function Hero() {
             delay: 0.5
         });
 
-        // Scramble "Vishwakarma Institute of Technology" - slower
         gsap.to(vitRef.current, {
             duration: 2.5,
             scrambleText: {
@@ -38,7 +35,6 @@ export function Hero() {
             delay: 2
         });
 
-        // Scramble tagline - slower
         gsap.to(taglineRef.current, {
             duration: 2,
             scrambleText: {
@@ -54,24 +50,23 @@ export function Hero() {
     return (
         <section className="relative h-screen w-full flex items-center overflow-hidden">
             <ExpandableNavbar />
-            {/* Background Video - Left Aligned */}
             <div className="absolute inset-0 z-0 w-full h-full">
                 <video
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover object-[20%_center] md:object-left"
+                    className="w-full h-full object-cover object-center md:object-[20%_center] lg:object-left opacity-70 md:opacity-100"
                 >
                     <source src="/assets/hero-video.mp4" type="video/mp4" />
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/50 to-black" />
+
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black md:from-transparent" />
             </div>
 
-            {/* Content - Right Aligned */}
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex justify-end">
-                <div className="text-right max-w-2xl translate-x-6 -translate-y-8 md:translate-x-12 md:-translate-y-10">
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 drop-shadow-2xl">
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex justify-center md:justify-end">
+                <div className="text-center md:text-right max-w-2xl md:translate-x-12 md:-translate-y-10">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tighter mb-4 md:mb-6 drop-shadow-2xl">
                         <span 
                             ref={gdgRef}
                             className="bg-clip-text text-transparent bg-gradient-to-br from-gray-100 to-gray-500"
@@ -82,14 +77,14 @@ export function Hero() {
 
                     <p
                         ref={vitRef}
-                        className="text-xl md:text-2xl text-gray-300 font-medium tracking-wide mb-4"
+                        className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 font-medium tracking-wide mb-3 md:mb-4"
                     >
                         
                     </p>
 
                     <p
                         ref={taglineRef}
-                        className="text-lg md:text-xl text-gray-400 font-light tracking-wider"
+                        className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 font-light tracking-wider"
                     >
                         
                     </p>

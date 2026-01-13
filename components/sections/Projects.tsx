@@ -55,7 +55,7 @@ const projects = [
       "Multiple problem tracks",
       "Strong student engagement",
     ],
-    visual: "✦ Spacecraft ✦",
+    visual: "/tensorfiesta.jpg",
   },
 ]
 

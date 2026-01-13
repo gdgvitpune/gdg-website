@@ -11,7 +11,7 @@ const galleryItems = [
     category: "Workspace",
   },
   {
-    image: "/networking.jpg",
+    image: "/networking.jpeg",
     title: "Vit Pune & Cummins Networking",
     description: "Building the future together, one sprint at a time",
     category: "Culture",

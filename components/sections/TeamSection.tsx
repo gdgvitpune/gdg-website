@@ -55,7 +55,7 @@ const teamMembers = [
     image: "/Alesha.jpeg",
     name: "Alesha",
     role: "Co-Head of Multimedia",
-    description: "Backend specialist building robust infrastructure",
+    description: "Silly and Goofy",
     social: {
       linkedin: "https://linkedin.com/in/davidkim",
       github: "https://github.com/davidkim",

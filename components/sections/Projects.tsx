@@ -16,7 +16,7 @@ const projects = [
       "₹20K total prize pool",
       "India Rank #1 in registrations & submissions",
     ],
-    visual: "★ Star Map ★",
+    visual: "/hov.png",
   },
   {
     label: "Achievements",
@@ -29,7 +29,7 @@ const projects = [
       "Hands-on cloud skill development",
       "Google-certified learning paths",
     ],
-    visual: "◉ Solar System ◉",
+    visual: "/gc.png",
   },
   {
     label: "Achievements",
@@ -42,7 +42,7 @@ const projects = [
       "Creativity-driven problem statement",
       "High student participation",
     ],
-    visual: "⬡ Station Hub ⬡",
+    visual: "/create.png",
   },
   {
     label: "Achievements",
@@ -190,18 +190,29 @@ export function Projects() {
                   </ul>
                 </div>
 
-                <div className="hidden md:flex flex-1 items-center justify-center w-full">
+                <div className="hidden md:flex flex-1 items-center justify-center w-full -mt-42 lg:-mt-40">
                   <div
-                    className="w-full max-w-md lg:max-w-2xl h-48 sm:h-64 lg:h-96 rounded-2xl flex items-center justify-center text-base sm:text-lg md:text-xl font-medium text-white"
+                    className="rounded-2xl flex items-center justify-center text-base sm:text-lg md:text-xl font-medium text-white overflow-hidden ml-20 lg:ml-32"
                     style={{
-                      background: "rgba(255, 255, 255, 0.1)",
-                      backdropFilter: "blur(20px)",
-                      WebkitBackdropFilter: "blur(20px)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      boxShadow: "0 8px 32px rgba(255, 255, 255, 0.1)",
+                      width: '280px',
+      height: '480px',
+      maxHeight: '70vh',
+      background: "rgba(255, 255, 255, 0.1)",
+      backdropFilter: "blur(20px)",
+      WebkitBackdropFilter: "blur(20px)",
+      border: "1px solid rgba(255, 255, 255, 0.2)",
+      boxShadow: "0 8px 32px rgba(255, 255, 255, 0.1)",
                     }}
                   >
-                    {project.visual}
+                    {project.visual.startsWith('/') ? (
+                      <img
+                        src={project.visual}
+                        alt={project.title}
+                        className="w-full h-full object-contain rounded-2xl"
+                      />
+                    ) : (
+                      project.visual
+                    )}
                   </div>
                 </div>
               </div>

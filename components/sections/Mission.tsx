@@ -5,7 +5,7 @@ import { GlassCard } from '../ui/GlassCard';
 import { CustomTypewriter } from '../ui/CustomTypewriter';
 
 export function Mission() {
-    const missionText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+    const missionText = "Empower students to learn, build, and innovate using Google technologies while solving real-world problems through collaboration and community learning";
 
     return (
 <section className="relative min-h-screen w-full flex flex-col items-center justify-center py-20 overflow-hidden">

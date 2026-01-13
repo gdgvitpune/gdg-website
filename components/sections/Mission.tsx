@@ -8,7 +8,7 @@ export function Mission() {
     const missionText = "Empower students to learn, build, and innovate using Google technologies while solving real-world problems through collaboration and community learning";
 
     return (
-<section className="relative min-h-screen w-full flex flex-col items-center justify-center py-20 overflow-hidden">
+<section id="mission" className="relative min-h-screen w-full flex flex-col items-center justify-center py-20 overflow-hidden">
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <div className="absolute inset-0 bg-black/40" />
             </div>

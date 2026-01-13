@@ -364,6 +364,7 @@ export function TeamSection() {
 
   return (
     <section
+      id="team"
       ref={sectionRef}
       className="relative h-screen overflow-hidden"
     >

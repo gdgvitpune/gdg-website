@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const navItems = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "What We Do", href: "#what-we-do" },
+  { label: "Our Mission", href: "#mission" },
   { label: "Events", href: "#events" },
+  { label: "Achievements", href: "#achievements" },
   { label: "Team", href: "#team" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact", href: "#contact" },
 ]
 
 export default function ExpandableNavbar() {

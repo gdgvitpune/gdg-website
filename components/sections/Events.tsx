@@ -167,7 +167,7 @@ export function Events() {
     };
 
     return (
-        <div ref={sectionRef} className="relative pt-40 pb-32" style={{ height: isMobile ? 'auto' : '400vh' }}>
+        <div id="events" ref={sectionRef} className="relative pt-40 pb-32" style={{ height: isMobile ? 'auto' : '400vh' }}>
             {!isMobile && (
                 <div
                     className="absolute top-20 left-0 right-0 z-50 flex justify-center transition-opacity duration-500"

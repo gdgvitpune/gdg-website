@@ -6,7 +6,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-<footer className="relative overflow-hidden bg-black pt-20 shadow-[0px_-17px_20px_2px_#00000024]">
+<footer id="contact" className="relative overflow-hidden bg-black pt-20 shadow-[0px_-17px_20px_2px_#00000024]">
   
   {/* Background image layer */}
 <img

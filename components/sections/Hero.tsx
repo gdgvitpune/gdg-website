@@ -48,7 +48,7 @@ export function Hero() {
     }, []);
 
     return (
-        <section className="relative h-screen w-full flex items-center overflow-hidden">
+        <section id="home" className="relative h-screen w-full flex items-center overflow-hidden">
             <ExpandableNavbar />
             <div className="absolute inset-0 z-0 w-full h-full">
                 <video

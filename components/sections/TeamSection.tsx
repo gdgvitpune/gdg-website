@@ -442,13 +442,13 @@ export function TeamSection() {
                 <div className="mt-auto flex items-end justify-between">
                   <div className="h-1 w-12 bg-white/30 rounded-full group-hover:w-24 transition-all" />
 
-                  {/* ---------- ICONS ---------- */}
+                  {/* icons */}
                   <div className="flex gap-3">
                     {[ 
-                      { Icon: Linkedin, url: member.social.linkedin, label: "LinkedIn", hoverColor: "hover:text-[#0A66C2]" },
-                      { Icon: Github, url: member.social.github, label: "GitHub", hoverColor: "hover:text-purple-400" },
-                      { Icon: Instagram, url: member.social.instagram, label: "Instagram", hoverColor: "hover:text-pink-500" },
-                    ].map(({ Icon, url, label, hoverColor }) => (
+                      { Icon: Linkedin, url: member.social.linkedin, label: "LinkedIn", groupHoverColor: "group-hover:text-[#0A66C2]" },
+                      { Icon: Github, url: member.social.github, label: "GitHub", groupHoverColor: "group-hover:text-purple-400" },
+                      { Icon: Instagram, url: member.social.instagram, label: "Instagram", groupHoverColor: "group-hover:text-pink-500" },
+                    ].map(({ Icon, url, label, groupHoverColor }) => (
                       <a
                         key={label}
                         href={url}
@@ -470,7 +470,7 @@ export function TeamSection() {
                           hover:shadow-lg hover:shadow-white/20
                         "
                       >
-                        <Icon className={`w-4 h-4 text-white transition-colors ${member.name === "Kabir" ? hoverColor : ""}`} />
+                        <Icon className={`w-4 h-4 text-white transition-colors ${member.name === "Kabir" ? groupHoverColor : ""}`} />
                       </a>
                     ))}
                   </div>

@@ -1,0 +1,282 @@
+export const teamMembers = [
+	{
+		image: '/AB4.png',
+		hoverImage: '/AB7.jpeg',
+		name: 'Aditya Bhattacharya',
+		role: 'Co-Lead',
+		description: 'Fellow Font Appreciator',
+		social: {
+			linkedin:
+				'https://www.linkedin.com/in/aditya-bhattacharya-software-developer/',
+			github: 'https://github.com/AdityaBhattacharya1',
+			instagram: 'https://www.instagram.com/_aditya.bhattacharya_/',
+		},
+	},
+
+	{
+		image: '/Kartik.jpg',
+		name: 'Kartik Chavan',
+		role: 'Organizer',
+		description: 'Full-stack architect passionate about scalable solutions',
+		social: {
+			linkedin: 'https://linkedin.com/in/sarahchen',
+			github: 'https://github.com/sarahchen',
+			instagram: 'https://instagram.com/sarahchen',
+		},
+	},
+	{
+		image: '/aparna.jpg',
+		name: 'Aparna Nimishakavi',
+		role: 'Co-Lead',
+		description:
+			'Award-winning designer creating beautiful user experiences',
+		social: {
+			linkedin: 'https://linkedin.com/in/marcuswilliams',
+			github: 'https://github.com/marcuswilliams',
+			instagram: 'https://instagram.com/marcuswilliams',
+		},
+	},
+	{
+		image: '/a.png',
+		name: 'Ananya',
+		role: 'Head of Multimedia',
+		description: 'Growth strategist driving brand visibility worldwide',
+		social: {
+			linkedin: 'https://linkedin.com/in/emilyrodriguez',
+			github: 'https://github.com/emilyrodriguez',
+			instagram: 'https://instagram.com/emilyrodriguez',
+		},
+	},
+	{
+		image: '/Alesha.jpeg',
+		name: 'Alesha',
+		role: 'Co-Head of Multimedia',
+		description: 'Silly and Goofy',
+		social: {
+			linkedin: 'https://linkedin.com/in/davidkim',
+			github: 'https://github.com/davidkim',
+			instagram: 'https://instagram.com/davidkim',
+		},
+	},
+	{
+		image: '/Parnika.jpeg',
+		name: 'Parnika',
+		role: 'Co-Head of Multimedia',
+		description: 'User-focused PM delivering impactful features',
+		social: {
+			linkedin: 'https://linkedin.com/in/lisathompson',
+			github: 'https://github.com/lisathompson',
+			instagram: 'https://instagram.com/lisathompson',
+		},
+	},
+	{
+		image: '/Orison.jpg',
+		name: 'Orison',
+		role: 'Head of Cloud',
+		description: 'React specialist crafting performant interfaces',
+		social: {
+			linkedin: 'https://linkedin.com/in/annamuller',
+			github: 'https://github.com/annamuller',
+			instagram: 'https://instagram.com/annamuller',
+		},
+	},
+	{
+		image: '/kabirkhanuja.jpeg',
+		hoverImage: '/kabirkhanuja2.jpeg',
+		name: 'Kabir',
+		role: 'Co-Head of Cloud',
+		description: 'Bro thinks beyond gpt-d solutions',
+		social: {
+			linkedin: 'https://linkedin.com/in/kabirkhanuja',
+			github: 'https://github.com/KabirKhanuja',
+			instagram: 'https://www.instagram.com/kabirkhanuja/',
+		},
+	},
+	{
+		image: '/Anush.jpg',
+		name: 'Anush',
+		role: 'Head of Execution',
+		description: 'AI/ML expert turning data into actionable insights',
+		social: {
+			linkedin: 'https://linkedin.com/in/jamespatel',
+			github: 'https://github.com/jamespatel',
+			instagram: 'https://instagram.com/jamespatel',
+		},
+	},
+	{
+		image: '/riddhi.png',
+		name: 'Riddhi',
+		role: 'Co-Head of Execution',
+		description: 'React specialist crafting performant interfaces',
+		social: {
+			linkedin: 'https://linkedin.com/in/annamuller',
+			github: 'https://github.com/annamuller',
+			instagram: 'https://instagram.com/annamuller',
+		},
+	},
+	{
+		image: '/Shruti.jpg',
+		name: 'Shruti',
+		role: 'Head of Content Creation',
+		description: 'React specialist crafting performant interfaces',
+		social: {
+			linkedin: 'https://linkedin.com/in/annamuller',
+			github: 'https://github.com/annamuller',
+			instagram: 'https://instagram.com/annamuller',
+		},
+	},
+	{
+		image: '/varad.jpeg',
+		name: 'Varad',
+		role: 'Co-Head of Content Creation',
+		description: 'React specialist crafting performant interfaces',
+		social: {
+			linkedin: 'https://linkedin.com/in/annamuller',
+			github: 'https://github.com/annamuller',
+			instagram: 'https://instagram.com/annamuller',
+		},
+	},
+	{
+		image: '/Atharva.png',
+		name: 'Atharva',
+		role: 'Head of Finance & Sponsorship',
+		description: 'React specialist crafting performant interfaces',
+		social: {
+			linkedin: 'https://linkedin.com/in/annamuller',
+			github: 'https://github.com/annamuller',
+			instagram: 'https://instagram.com/annamuller',
+		},
+	},
+	{
+		image: '/Anvay.jpg',
+		name: 'Anvay',
+		role: 'Co-Head of Finance & Sponsorship',
+		description: 'React specialist crafting performant interfaces',
+		social: {
+			linkedin: 'https://linkedin.com/in/annamuller',
+			github: 'https://github.com/annamuller',
+			instagram: 'https://instagram.com/annamuller',
+		},
+	},
+	{
+		image: '/Suhani.jpg',
+		name: 'Suhani',
+		role: 'Co-Head of Finance & Sponsorship',
+		description: 'React specialist crafting performant interfaces',
+		social: {
+			linkedin: 'https://linkedin.com/in/annamuller',
+			github: 'https://github.com/annamuller',
+			instagram: 'https://instagram.com/annamuller',
+		},
+	},
+	{
+		image: '/Sahil.jpg',
+		name: 'Sahil',
+		role: 'Head of Publicity & Outreach',
+		description: 'Fellow Font Appreciator',
+		social: {
+			linkedin: 'https://linkedin.com/in/alexjohnson',
+			github: 'https://github.com/alexjohnson',
+			instagram: 'https://instagram.com/alexjohnson',
+		},
+	},
+	{
+		image: '/Ab.jpg',
+		name: 'Aditya',
+		role: 'Co-Head of Publicity & Outreach',
+		description: 'Fellow Font Appreciator',
+		social: {
+			linkedin: 'https://linkedin.com/in/alexjohnson',
+			github: 'https://github.com/alexjohnson',
+			instagram: 'https://instagram.com/alexjohnson',
+		},
+	},
+	{
+		image: '/S.jpg',
+		name: 'Sarvadnya',
+		role: 'Head of Artficial Intelligence & Machine Learning',
+		description: 'Fellow Font Appreciator',
+		social: {
+			linkedin: 'https://linkedin.com/in/alexjohnson',
+			github: 'https://github.com/alexjohnson',
+			instagram: 'https://instagram.com/alexjohnson',
+		},
+	},
+	{
+		image: '/M.png',
+		name: 'Mahendrakumar',
+		role: 'Co-Head of Artficial Intelligence & Machine Learning',
+		description: 'React specialist crafting performant interfaces',
+		social: {
+			linkedin: 'https://linkedin.com/in/annamuller',
+			github: 'https://github.com/annamuller',
+			instagram: 'https://instagram.com/annamuller',
+		},
+	},
+	{
+		image: '/Pallav.jpg',
+		name: 'Pallav',
+		role: 'Head of Web Developement',
+		description: 'React specialist crafting performant interfaces',
+		social: {
+			linkedin: 'https://linkedin.com/in/annamuller',
+			github: 'https://github.com/annamuller',
+			instagram: 'https://instagram.com/annamuller',
+		},
+	},
+	{
+		image: '/Vedant.jpg',
+		name: 'Vedant',
+		role: 'Co-Head of Web Developement',
+		description: 'Fellow Font Appreciator',
+		social: {
+			linkedin: 'https://linkedin.com/in/alexjohnson',
+			github: 'https://github.com/alexjohnson',
+			instagram: 'https://instagram.com/alexjohnson',
+		},
+	},
+	{
+		image: '/Animesh.jpg',
+		name: 'Animesh',
+		role: 'Head of App Developement',
+		description: 'Fellow Font Appreciator',
+		social: {
+			linkedin: 'https://linkedin.com/in/alexjohnson',
+			github: 'https://github.com/alexjohnson',
+			instagram: 'https://instagram.com/alexjohnson',
+		},
+	},
+	{
+		image: '/ritik.jpg',
+		name: 'Ritik',
+		role: 'Co-Head of App Developement',
+		description: 'Fellow Font Appreciator',
+		social: {
+			linkedin: 'https://linkedin.com/in/alexjohnson',
+			github: 'https://github.com/alexjohnson',
+			instagram: 'https://instagram.com/alexjohnson',
+		},
+	},
+	{
+		image: '/Imran.png',
+		name: 'Imran',
+		role: 'Head of Web3',
+		description: 'Fellow Font Appreciator',
+		social: {
+			linkedin: 'https://linkedin.com/in/alexjohnson',
+			github: 'https://github.com/alexjohnson',
+			instagram: 'https://instagram.com/alexjohnson',
+		},
+	},
+	{
+		image: 'Swanandi.jpg',
+		name: 'Swanandi',
+		role: 'Co-Head of Web3',
+		description: 'Fellow Font Appreciator',
+		social: {
+			linkedin: 'https://linkedin.com/in/alexjohnson',
+			github: 'https://github.com/alexjohnson',
+			instagram: 'https://instagram.com/alexjohnson',
+		},
+	},
+]

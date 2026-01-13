@@ -39,7 +39,7 @@ const teamMembers = [
     },
   },
   {
-    image: "/professional-woman-marketing-headshot.png",
+    image: "/a.png",
     name: "Ananya",
     role: "Head of Multimedia",
     description: "Growth strategist driving brand visibility worldwide",

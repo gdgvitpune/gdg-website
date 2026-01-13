@@ -3,69 +3,57 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Github, Linkedin, Instagram } from "lucide-react"
+
 
 const projects = [
   {
-    label: "Projects",
-    title: "Stellar Mapping",
+    label: "Achievements",
+    title: "Hack-O-Verse",
     description:
-      "Navigate through the cosmos with precision mapping technology that reveals the secrets of distant star systems.",
+      "Secured India-wide Rank #1 while hosting an open-innovation hackathon with a ₹20K prize pool and nationwide participation.",
     items: [
-      "Deep Space Research",
-      "Constellation Analysis",
-      "Celestial Navigation",
-      "Cosmic Coordinates",
-      "Stellar Classification",
-      "Galactic Mapping",
-      "Nebula Discovery",
+      "Open-innovation problem statement",
+      "₹20K total prize pool",
+      "India Rank #1 in registrations & submissions",
     ],
     visual: "★ Star Map ★",
   },
   {
-    label: "Projects",
-    title: "Planetary Systems",
+    label: "Achievements",
+    title: "Google Cloud Study Jams",
     description:
-      "Discover diverse planetary systems and understand the complex dynamics of celestial bodies orbiting distant stars.",
+      "Recognized as a Tier-1 amongst all GDG's for exceptional participation and successful cloud skill completions.",
     items: [
-      "Planet Classification",
-      "Orbital Mechanics",
-      "Atmospheric Analysis",
-      "Exoplanet Research",
-      "Surface Mapping",
-      "Climate Systems",
-      "Habitability Studies",
+      "Tier-1 chapter recognition",
+      "100+ Google Cloud completions",
+      "Hands-on cloud skill development",
+      "Google-certified learning paths",
     ],
     visual: "◉ Solar System ◉",
   },
   {
-    label: "Projects",
-    title: "Space Stations",
+    label: "Achievements",
+    title: "Create-A-Thon",
     description:
-      "Advanced orbital facilities that serve as hubs for research, Projects, and humanity's expansion into the cosmos.",
+      "Organized an AI short-film competition with a ₹50K+ prize pool, encouraging creativity through AI-powered storytelling.",
     items: [
-      "Orbital Design",
-      "Life Support Systems",
-      "Research Laboratories",
-      "Docking Protocols",
-      "Energy Generation",
-      "Communication Arrays",
-      "Crew Operations",
+      "₹50K+ total prize pool",
+      "AI short-film competition",
+      "Creativity-driven problem statement",
+      "High student participation",
     ],
     visual: "⬡ Station Hub ⬡",
   },
   {
-    label: "Projects",
-    title: "Deep Space Travel",
-    description: "Venture beyond known boundaries with advanced propulsion systems designed for interstellar journeys.",
+    label: "Achievements",
+    title: "Tensor Fiesta Hackathon",
+    description:
+      "Conducted an AI & ML hackathon featuring a ₹25K+ prize pool with multiple competitive tracks.",
     items: [
-      "Warp Drive Technology",
-      "Navigation Systems",
-      "Long-Range Scanners",
-      "Quantum Communications",
-      "Mission Planning",
-      "Resource Management",
-      "Emergency Protocols",
+      "₹25K+ total prize pool",
+      "AI & ML focused hackathon",
+      "Multiple problem tracks",
+      "Strong student engagement",
     ],
     visual: "✦ Spacecraft ✦",
   },

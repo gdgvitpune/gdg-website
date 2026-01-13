@@ -6,7 +6,7 @@ import { Github, Linkedin, Instagram } from "lucide-react"
 
 const teamMembers = [
   {
-    image: "/AdityaB2.jpg",
+    image: "/AB4.png",
     name: "Aditya Bhattacharya",
     role: "Co-Lead",
     description: "Fellow Font Appreciator",
@@ -287,6 +287,7 @@ export function TeamSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const [scrollDistance, setScrollDistance] = useState(0)
+  const [activeCard, setActiveCard] = useState<number | null>(null)
 
   /* ---------- CALCULATE SCROLL WIDTH ---------- */
   useEffect(() => {
@@ -385,6 +386,11 @@ export function TeamSection() {
           {teamMembers.map((member, index) => (
             <div
               key={index}
+              onClick={() => {
+                if (member.name === "Kabir" && window.innerWidth < 768) {
+                  setActiveCard(activeCard === index ? null : index)
+                }
+              }}
               className={`
                 relative z-20 pointer-events-auto
                 flex-shrink-0
@@ -399,9 +405,10 @@ export function TeamSection() {
                 group
                 ${
                   member.name === "Kabir"
-                    ? "hover:shadow-2xl hover:shadow-blue-500/40 hover:border-blue-400/60"
+                    ? "hover:shadow-2xl hover:shadow-blue-500/40 hover:border-blue-400/60 md:cursor-pointer"
                     : "hover:shadow-2xl hover:shadow-white/10"
                 }
+                ${activeCard === index && member.name === "Kabir" ? "-translate-y-3 bg-white/15 shadow-2xl shadow-blue-500/40 border-blue-400/60" : ""}
               `}
             >
               {/* Number */}
@@ -419,13 +426,17 @@ export function TeamSection() {
                       src={member.image}
                       alt="Kabir Khanuja - Co-Head of Cloud at GDG, Google Developer Groups VIT Pune"
                       fill
-                      className="object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110"
+                      className={`object-cover transition-all duration-500 ${
+                        activeCard === index ? "opacity-0 scale-110" : "group-hover:opacity-0 group-hover:scale-110"
+                      }`}
                     />
                     <Image
                       src={member.hoverImage}
                       alt="Kabir Khanuja - Co-Head of Cloud at GDG, Google Developer Groups cloud technology expert"
                       fill
-                      className="object-cover transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110"
+                      className={`object-cover transition-all duration-500 ${
+                        activeCard === index ? "opacity-100 scale-110" : "opacity-0 group-hover:opacity-100 group-hover:scale-110"
+                      }`}
                     />
                   </>
                 ) : (

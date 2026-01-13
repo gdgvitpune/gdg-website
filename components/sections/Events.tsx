@@ -41,7 +41,7 @@ const events = [
     {
         id: 4,
         title: "Web Blitz",
-        subtitle: "MACHINE LEARNING BOOTCAMP",
+        subtitle: "Hands-on web development workshop",
         date: "JAN 20, 2025",
         description: "A hands-on web development workshop focused on HTML, CSS, JavaScript, React basics, and modern web practices to kickstart students’ web development journey.",
         color: "from-blue-500 to-cyan-500",
@@ -53,7 +53,7 @@ const events = [
     {
         id: 5,
         title: "Flutter Forge",
-        subtitle: "BLOCKCHAIN & CRYPTO",
+        subtitle: "Flutter workshop",
         date: "FEB 10, 2025",
         description: "An immersive Flutter workshop introducing cross-platform app development, UI building, Firebase integration, and real-world app development concepts.",
         color: "from-green-500 to-emerald-500",

@@ -5,8 +5,9 @@ import Galaxy from '@/components/Galaxy';
 import { Hero } from '@/components/sections/Hero';
 import { Mission } from '@/components/sections/Mission';
 import { Events } from '@/components/sections/Events';
-import { Achievements } from '@/components/sections/Achievements';
+import { TeamSection } from '@/components/sections/TeamSection';
 import { Projects } from '@/components/sections/Projects';
+import { GallerySection } from '@/components/sections/GallerySection';
 import { Footer } from '@/components/sections/Footer';
 
 export default function Home() {
@@ -21,7 +22,7 @@ export default function Home() {
       {/* Galaxy Background - Fixed position covering entire viewport */}
       <div className="fixed inset-0 w-full h-full z-0">
         <Galaxy
-          mouseRepulsion={true}
+          mouseRepulsion={false}
           transparent={false}
           starSpeed={0.8}
           density={1}
@@ -38,8 +39,9 @@ export default function Home() {
       <div className="relative z-10 pointer-events-none">
         <Mission />
         <Events />
-        <Achievements />
         <Projects />
+        <TeamSection />
+        <GallerySection />
         <Footer />
       </div>
     </main>

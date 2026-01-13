@@ -72,6 +72,28 @@ const teamMembers = [
     },
   },
   {
+    image: "/Orison.jpg",
+    name: "Orison",
+    role: "Head of Cloud",
+    description: "React specialist crafting performant interfaces",
+    social: {
+      linkedin: "https://linkedin.com/in/annamuller",
+      github: "https://github.com/annamuller",
+      instagram: "https://instagram.com/annamuller",
+    },
+  },
+  {
+    image: "/kb.jpeg",
+    name: "Kabir",
+    role: "Co-Head of Cloud",
+    description: "Bro thinks beyond gpt-d solutions",
+    social: {
+      linkedin: "https://linkedin.com/in/kabirkhanuja",
+      github: "https://github.com/KabirKhanuja",
+      instagram: "https://www.instagram.com/kabirkhanuja/",
+    },
+  },
+  {
     image: "/Anush.jpg",
     name: "Anush",
     role: "Head of Execution",
@@ -185,28 +207,6 @@ const teamMembers = [
     image: "/M.png",
     name: "Mahendrakumar",
     role: "Co-Head of Artficial Intelligence & Machine Learning",
-    description: "React specialist crafting performant interfaces",
-    social: {
-      linkedin: "https://linkedin.com/in/annamuller",
-      github: "https://github.com/annamuller",
-      instagram: "https://instagram.com/annamuller",
-    },
-  },
-   {
-    image: "/Orison.jpg",
-    name: "Orison",
-    role: "Head of Cloud",
-    description: "React specialist crafting performant interfaces",
-    social: {
-      linkedin: "https://linkedin.com/in/annamuller",
-      github: "https://github.com/annamuller",
-      instagram: "https://instagram.com/annamuller",
-    },
-  },
-    {
-    image: "/kb.jpeg",
-    name: "Kabir",
-    role: "Co-Head of Cloud",
     description: "React specialist crafting performant interfaces",
     social: {
       linkedin: "https://linkedin.com/in/annamuller",
@@ -384,7 +384,7 @@ export function TeamSection() {
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="
+              className={`
                 relative z-20 pointer-events-auto
                 flex-shrink-0
                 w-[380px] h-[500px]
@@ -395,9 +395,13 @@ export function TeamSection() {
                 hover:-translate-y-3
                 hover:border-white/40
                 hover:bg-white/15
-                hover:shadow-2xl hover:shadow-white/10
                 group
-              "
+                ${
+                  member.name === "Kabir"
+                    ? "hover:shadow-2xl hover:shadow-blue-500/40 hover:border-blue-400/60"
+                    : "hover:shadow-2xl hover:shadow-white/10"
+                }
+              `}
             >
               {/* Number */}
               <div className="absolute top-6 right-6 z-30">
@@ -418,8 +422,14 @@ export function TeamSection() {
               </div>
 
               {/* Content */}
-              <div className="p-8 flex flex-col h-[240px] relative z-20">
-                <h3 className="text-2xl font-bold text-white mb-2">
+                <div className="p-8 flex flex-col h-60 relative z-20">
+                <h3
+                  className={`text-2xl font-bold mb-2 transition-all duration-300 ${
+                  member.name === "Kabir"
+                    ? "text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-sky-400 group-hover:via-blue-500 group-hover:to-indigo-500 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.35)]"
+                    : "text-white"
+                  }`}
+                >
                   {member.name}
                 </h3>
                 <p className="text-sm uppercase tracking-wider text-white/80 mb-4">
@@ -435,10 +445,10 @@ export function TeamSection() {
                   {/* ---------- ICONS ---------- */}
                   <div className="flex gap-3">
                     {[ 
-                      { Icon: Linkedin, url: member.social.linkedin, label: "LinkedIn" },
-                      { Icon: Github, url: member.social.github, label: "GitHub" },
-                      { Icon: Instagram, url: member.social.instagram, label: "Instagram" },
-                    ].map(({ Icon, url, label }) => (
+                      { Icon: Linkedin, url: member.social.linkedin, label: "LinkedIn", hoverColor: "hover:text-[#0A66C2]" },
+                      { Icon: Github, url: member.social.github, label: "GitHub", hoverColor: "hover:text-purple-400" },
+                      { Icon: Instagram, url: member.social.instagram, label: "Instagram", hoverColor: "hover:text-pink-500" },
+                    ].map(({ Icon, url, label, hoverColor }) => (
                       <a
                         key={label}
                         href={url}
@@ -460,7 +470,7 @@ export function TeamSection() {
                           hover:shadow-lg hover:shadow-white/20
                         "
                       >
-                        <Icon className="w-4 h-4 text-white" />
+                        <Icon className={`w-4 h-4 text-white transition-colors ${member.name === "Kabir" ? hoverColor : ""}`} />
                       </a>
                     ))}
                   </div>

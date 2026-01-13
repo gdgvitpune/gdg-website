@@ -83,7 +83,8 @@ const teamMembers = [
     },
   },
   {
-    image: "/kb.jpeg",
+    image: "/kabirkhanuja.jpeg",
+    hoverImage: "/kabirkhanuja2.jpeg",
     name: "Kabir",
     role: "Co-Head of Cloud",
     description: "Bro thinks beyond gpt-d solutions",
@@ -412,12 +413,29 @@ export function TeamSection() {
 
               {/* Image */}
               <div className="relative h-[260px] overflow-hidden">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                {member.name === "Kabir" && member.hoverImage ? (
+                  <>
+                    <Image
+                      src={member.image}
+                      alt="Kabir Khanuja - Co-Head of Cloud at GDG, Google Developer Groups VIT Pune"
+                      fill
+                      className="object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110"
+                    />
+                    <Image
+                      src={member.hoverImage}
+                      alt="Kabir Khanuja - Co-Head of Cloud at GDG, Google Developer Groups cloud technology expert"
+                      fill
+                      className="object-cover transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110"
+                    />
+                  </>
+                ) : (
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
               </div>
 

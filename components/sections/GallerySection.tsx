@@ -11,33 +11,38 @@ const galleryItems = [
     category: "Workspace",
   },
   {
-    image: "/gallery-2.jpg",
-    title: "Team Collaboration",
+    image: "/networking.jpg",
+    title: "Vit Pune & Cummins Networking",
     description: "Building the future together, one sprint at a time",
     category: "Culture",
   },
   {
-    image: "/gallery-3.jpg",
-    title: "Product Launch",
-    description: "Celebrating our latest release with the team",
+    image: "/devx.jpg",
+    title: "devX Workshop",
+    description: "multi-day speaker series",
     category: "Events",
   },
   {
-    image: "/gallery-4.jpg",
-    title: "Tech Stack",
+    image: "/web3.jpg",
+    title: "Web3",
     description: "Cutting-edge technology powering our solutions",
     category: "Technology",
   },
   {
-    image: "/gallery-5.jpg",
-    title: "Community Impact",
-    description: "Making a difference in our local community",
+    image: "/flutter.png",
+    title: "Flutter Forge",
+    description: "BLOCKCHAIN & CRYPTO",
     category: "Social",
   },
   {
-    image: "/gallery-6.jpg",
-    title: "Global Reach",
+    image: "/team.jpeg",
+    title: "Bonding with the Team",
     description: "Connecting with clients across continents",
+    category: "Growth",
+  },{
+    image: "/mog.png",
+    title: "Mogging",
+    description: "Team Bonding",
     category: "Growth",
   },
 ]
@@ -55,13 +60,27 @@ export function GallerySection() {
     const calculateDistance = () => {
       const trackWidth = track.scrollWidth
       const viewportWidth = window.innerWidth
-      const distance = trackWidth - viewportWidth
+      const distance = Math.max(trackWidth - viewportWidth, 0)
       setScrollDistance(distance)
     }
 
+    // initial + delayed calc for images
     setTimeout(calculateDistance, 100)
     window.addEventListener("resize", calculateDistance)
-    return () => window.removeEventListener("resize", calculateDistance)
+    window.addEventListener("load", calculateDistance)
+
+    // observe content changes (images added/loaded, DOM updates)
+    let ro: ResizeObserver | null = null
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(calculateDistance)
+      ro.observe(track)
+    }
+
+    return () => {
+      window.removeEventListener("resize", calculateDistance)
+      window.removeEventListener("load", calculateDistance)
+      if (ro) ro.disconnect()
+    }
   }, [])
 
   useEffect(() => {
@@ -112,7 +131,7 @@ export function GallerySection() {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: () => `+=${scrollDistance + 500}`,
+            end: () => `+=${scrollDistance}`,
             scrub: 1,
             pin: true,
             anticipatePin: 1,
@@ -149,7 +168,7 @@ export function GallerySection() {
         <div
           ref={trackRef}
           className="flex gap-8 will-change-transform"
-          style={{ paddingLeft: '4rem', paddingRight: '100vw' }}
+          style={{ paddingLeft: '100vw', paddingRight: '100vw' }}
         >
           {galleryItems.map((item, index) => (
             <div

@@ -6,9 +6,9 @@ import { Github, Linkedin, Instagram } from "lucide-react"
 
 const teamMembers = [
   {
-    image: "/professional-headshot-man-tech.jpg",
+    image: "/AdityaB2.jpg",
     name: "Aditya Bhattacharya",
-    role: "Technical Lead",
+    role: "Co-Lead",
     description: "Fellow Font Appreciator",
     social: {
       linkedin: "https://linkedin.com/in/alexjohnson",
@@ -17,7 +17,7 @@ const teamMembers = [
     },
   },
   {
-    image: "/professional-headshot-woman-developer.jpg",
+    image: "/Kartik.jpg",
     name: "Kartik Chavan",
     role: "Organizer",
     description: "Full-stack architect passionate about scalable solutions",
@@ -28,9 +28,9 @@ const teamMembers = [
     },
   },
   {
-    image: "/professional-headshot-man-designer.jpg",
+    image: "/aparna.jpg",
     name: "Aparna Nimishakavi",
-    role: "Non Technical Lead",
+    role: "Co-Lead",
     description: "Award-winning designer creating beautiful user experiences",
     social: {
       linkedin: "https://linkedin.com/in/marcuswilliams",
@@ -50,7 +50,7 @@ const teamMembers = [
     },
   },
   {
-    image: "/professional-headshot-man-engineer.jpg",
+    image: "/Alesha.jpeg",
     name: "Alesha",
     role: "Co-Head of Multimedia",
     description: "Backend specialist building robust infrastructure",
@@ -61,7 +61,7 @@ const teamMembers = [
     },
   },
   {
-    image: "/professional-headshot-woman-product.jpg",
+    image: "/Parnika.jpeg",
     name: "Parnika",
     role: "Co-Head of Multimedia",
     description: "User-focused PM delivering impactful features",
@@ -72,7 +72,7 @@ const teamMembers = [
     },
   },
   {
-    image: "/professional-headshot-man-data.jpg",
+    image: "/Anush.jpg",
     name: "Anush",
     role: "Head of Execution",
     description: "AI/ML expert turning data into actionable insights",
@@ -83,7 +83,7 @@ const teamMembers = [
     },
   },
   {
-    image: "/professional-headshot-woman-frontend.jpg",
+    image: "/riddhi.png",
     name: "Riddhi",
     role: "Co-Head of Execution",
     description: "React specialist crafting performant interfaces",
@@ -94,7 +94,7 @@ const teamMembers = [
     },
   },
   {
-    image: "/professional-headshot-woman-frontend.jpg",
+    image: "/Shruti.jpg",
     name: "Shruti",
     role: "Head of Content Creation",
     description: "React specialist crafting performant interfaces",
@@ -105,7 +105,7 @@ const teamMembers = [
     },
   },
   {
-    image: "/professional-headshot-woman-frontend.jpg",
+    image: "/varad.jpeg",
     name: "Varad",
     role: "Co-Head of Content Creation",
     description: "React specialist crafting performant interfaces",
@@ -116,7 +116,7 @@ const teamMembers = [
     },
   },
    {
-    image: "/professional-headshot-woman-frontend.jpg",
+    image: "/Atharva.png",
     name: "Atharva",
     role: "Head of Finance & Sponsorship",
     description: "React specialist crafting performant interfaces",
@@ -127,7 +127,7 @@ const teamMembers = [
     },
   },
     {
-    image: "/professional-headshot-woman-frontend.jpg",
+    image: "/Anvay.jpg",
     name: "Anvay",
     role: "Co-Head of Finance & Sponsorship",
     description: "React specialist crafting performant interfaces",
@@ -138,7 +138,7 @@ const teamMembers = [
     },
   },
     {
-    image: "/professional-headshot-woman-frontend.jpg",
+    image: "/Suhani.jpg",
     name: "Suhani",
     role: "Co-Head of Finance & Sponsorship",
     description: "React specialist crafting performant interfaces",
@@ -149,7 +149,7 @@ const teamMembers = [
     },
   },
   {
-  image: "/professional-headshot-man-tech.jpg",
+  image: "/Sahil.jpg",
   name: "Sahil",
   role: "Head of Publicity & Outreach",
   description: "Fellow Font Appreciator",
@@ -160,7 +160,7 @@ const teamMembers = [
   },
 },
 {
-  image: "/professional-headshot-man-tech.jpg",
+  image: "/Ab.jpg",
   name: "Aditya",
   role: "Co-Head of Publicity & Outreach",
   description: "Fellow Font Appreciator",
@@ -171,9 +171,9 @@ const teamMembers = [
   },
 },
 {
-  image: "/professional-headshot-man-tech.jpg",
-  name: "Aditya",
-  role: "Co-Head of Publicity & Outreach",
+  image: "/S.jpg",
+  name: "Sarvadnya",
+  role: "Head of Artficial Intelligence & Machine Learning",
   description: "Fellow Font Appreciator",
   social: {
     linkedin: "https://linkedin.com/in/alexjohnson",
@@ -182,9 +182,9 @@ const teamMembers = [
   },
 },
   {
-    image: "/professional-headshot-woman-frontend.jpg",
-    name: "Varad",
-    role: "Co-Head of Content Creation",
+    image: "/M.png",
+    name: "Mahendrakumar",
+    role: "Co-Head of Artficial Intelligence & Machine Learning",
     description: "React specialist crafting performant interfaces",
     social: {
       linkedin: "https://linkedin.com/in/annamuller",
@@ -193,9 +193,9 @@ const teamMembers = [
     },
   },
    {
-    image: "/professional-headshot-woman-frontend.jpg",
-    name: "Atharva",
-    role: "Head of Finance & Sponsorship",
+    image: "/Orison.jpg",
+    name: "Orison",
+    role: "Head of Cloud",
     description: "React specialist crafting performant interfaces",
     social: {
       linkedin: "https://linkedin.com/in/annamuller",
@@ -204,9 +204,9 @@ const teamMembers = [
     },
   },
     {
-    image: "/professional-headshot-woman-frontend.jpg",
-    name: "Anvay",
-    role: "Co-Head of Finance & Sponsorship",
+    image: "/kb.jpeg",
+    name: "Kabir",
+    role: "Co-Head of Cloud",
     description: "React specialist crafting performant interfaces",
     social: {
       linkedin: "https://linkedin.com/in/annamuller",
@@ -215,9 +215,9 @@ const teamMembers = [
     },
   },
     {
-    image: "/professional-headshot-woman-frontend.jpg",
-    name: "Suhani",
-    role: "Co-Head of Finance & Sponsorship",
+    image: "/Pallav.jpg",
+    name: "Pallav",
+    role: "Head of Web Developement",
     description: "React specialist crafting performant interfaces",
     social: {
       linkedin: "https://linkedin.com/in/annamuller",
@@ -226,9 +226,9 @@ const teamMembers = [
     },
   },
   {
-  image: "/professional-headshot-man-tech.jpg",
-  name: "Sahil",
-  role: "Head of Publicity & Outreach",
+  image: "/Vedant.jpg",
+  name: "Vedant",
+  role: "Co-Head of Web Developement",
   description: "Fellow Font Appreciator",
   social: {
     linkedin: "https://linkedin.com/in/alexjohnson",
@@ -237,9 +237,9 @@ const teamMembers = [
   },
 },
 {
-  image: "/professional-headshot-man-tech.jpg",
-  name: "Aditya",
-  role: "Co-Head of Publicity & Outreach",
+  image: "/Animesh.jpg",
+  name: "Animesh",
+  role: "Head of App Developement",
   description: "Fellow Font Appreciator",
   social: {
     linkedin: "https://linkedin.com/in/alexjohnson",
@@ -248,9 +248,31 @@ const teamMembers = [
   },
 },
 {
-  image: "/professional-headshot-man-tech.jpg",
-  name: "Aditya",
-  role: "Co-Head of Publicity & Outreach",
+  image: "/ritik.jpg",
+  name: "Ritik",
+  role: "Co-Head of App Developement",
+  description: "Fellow Font Appreciator",
+  social: {
+    linkedin: "https://linkedin.com/in/alexjohnson",
+    github: "https://github.com/alexjohnson",
+    instagram: "https://instagram.com/alexjohnson",
+  },
+},
+{
+  image: "/Imran.png",
+  name: "Imran",
+  role: "Head of Web3",
+  description: "Fellow Font Appreciator",
+  social: {
+    linkedin: "https://linkedin.com/in/alexjohnson",
+    github: "https://github.com/alexjohnson",
+    instagram: "https://instagram.com/alexjohnson",
+  },
+},
+{
+  image: "Swanandi.jpg",
+  name: "Swanandi",
+  role: "Co-Head of Web3",
   description: "Fellow Font Appreciator",
   social: {
     linkedin: "https://linkedin.com/in/alexjohnson",
@@ -341,7 +363,6 @@ export function TeamSection() {
       ref={sectionRef}
       className="relative h-screen overflow-hidden"
     >
-      {/* ---------- HEADER (NO POINTER BLOCKING) ---------- */}
       <div className="absolute top-0 left-0 right-0 z-10 pt-8 pb-4">
         <div className="pointer-events-none">
           <h2 className="text-4xl md:text-6xl font-bold text-center text-white">
@@ -386,7 +407,7 @@ export function TeamSection() {
               </div>
 
               {/* Image */}
-              <div className="relative h-[220px] overflow-hidden">
+              <div className="relative h-[260px] overflow-hidden">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -397,7 +418,7 @@ export function TeamSection() {
               </div>
 
               {/* Content */}
-              <div className="p-8 flex flex-col h-[280px] relative z-20">
+              <div className="p-8 flex flex-col h-[240px] relative z-20">
                 <h3 className="text-2xl font-bold text-white mb-2">
                   {member.name}
                 </h3>

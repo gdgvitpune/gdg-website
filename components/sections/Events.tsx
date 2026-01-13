@@ -179,7 +179,7 @@ export function Events() {
                 </div>
             )}
 
-            <div className={`${isMobile ? 'relative' : 'sticky top-0'} h-screen flex items-center justify-center overflow-hidden`}>
+           <div className={`${isMobile ? 'relative' : 'sticky top-0'} h-screen flex items-center justify-center ${isMobile ? 'overflow-visible' : 'overflow-hidden'}`}>
                 <div className="container mx-auto px-4">
                     
                     {/* Mobile Swipeable Carousel */}

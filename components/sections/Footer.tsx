@@ -10,24 +10,21 @@ export function Footer() {
   
   {/* Background image layer */}
 <img
-  src="/footer-bg.jpg"
+  src="/gdg.png"
   alt=""
   className="
+    hidden lg:block
     pointer-events-none
     select-none
     absolute
-    origin-bottom-right
-    opacity-100
+    inset-0
+    mx-auto
+    my-auto
+    w-[40rem]
     max-w-none
-
-    right-0
-    bottom-0
-
-    scale-[clamp(1.1,1.4vw,1.8)]
-
-    translate-x-[clamp(0px,-6vw,-120px)]
-    translate-y-[clamp(0px,-8vh,-200px)]
-    rotate-[clamp(0.5deg,1.2vw,2deg)]
+    opacity-10
+    blur-[1px]
+    z-0
   "
 />
 
@@ -186,7 +183,7 @@ export function Footer() {
       >
 
         <div className="w-full overflow-hidden pointer-events-none h-65 mask-b-from-30% z-[2]">
-          <img className="h-[16rem] lg:hidden relative -bottom-[0.1rem] opacity-20 select-none mx-auto" src="/gdgIcon.svg" alt="GDG Logo" />
+          <img className="h-[16rem] lg:hidden relative -bottom-[0.1rem] opacity-20 select-none mx-auto" src="/gdg.png" alt="GDG Logo" />
           <p className="relative -bottom-[0.1rem] text-white text-[16rem] text-center font-extrabold opacity-[22%] select-none hidden lg:block">
           GDGoC VIT
         </p>

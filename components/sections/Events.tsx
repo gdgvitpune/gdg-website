@@ -212,9 +212,6 @@ export function Events() {
                                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
                                                     
                                                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                                                        <div className="px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-xs font-bold tracking-widest text-white mb-4 inline-block">
-                                                            UPCOMING
-                                                        </div>
                                                         
                                                         <h1 className="text-4xl font-black mb-2 text-white leading-tight">
                                                             {event.title}
@@ -376,9 +373,7 @@ export function Events() {
                             <div className="relative">
                                 <div className="relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-3xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]">
                                     <div className="flex items-center gap-3 mb-6">
-                                        <div className="px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-xs font-bold tracking-widest text-white">
-                                            UPCOMING
-                                        </div>
+                                        
                                     </div>
 
                                     <h1 className="text-2xl md:text-5xl font-black mb-3 text-white leading-tight">

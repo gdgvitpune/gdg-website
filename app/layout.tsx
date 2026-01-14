@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import 'lenis/dist/lenis.css'
+import { Partytown } from '@qwik.dev/partytown/react'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -126,6 +127,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
+				<Partytown debug={false} forward={['dataLayer.push']} />
+
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
@@ -150,6 +153,12 @@ export default function RootLayout({
 			>
 				{children}
 			</body>
+			<script
+				src="https://beamanalytics.b-cdn.net/beam.min.js"
+				data-token="906f8a55-d563-41ba-87fe-ad8cedd43f5f"
+				async
+				type="text/partytown"
+			></script>
 		</html>
 	)
 }

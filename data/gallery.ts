@@ -2,7 +2,7 @@ export const galleryItems = [
 	{
 		image: '/jams.png',
 		title: 'Google Cloud Study Jams',
-		description: 'Our state-of-the-art workspace designed for creativity',
+		description: 'Cloud computing workshops',
 		category: 'Workspace',
 	},
 	{
@@ -41,6 +41,5 @@ export const galleryItems = [
 		description: 'Team Bonding',
 		alt: 'Sarvadnya, Aditya Bhattacharya, Kabir Khanuja',
 		category: 'Mog',
-
 	},
 ]

@@ -28,11 +28,19 @@ export const metadata: Metadata = {
 		'VIT Pune',
 		'Google developer community',
 		'Kabir Khanuja',
-		'Kabir Khanuja GDG',
-		'Kabir Khanuja VIT Pune',
-		'Aditya Bhattacharya VIT GDG'
+		'Kabir Khanuja GDG', // shameless self promo
+		'Kabir Khanuja VIT Pune', // shameless self promo
+		'Aditya Bhattacharya VIT GDG',
+		'Aditya Bhattacharya', // baap baap hota hai
 	],
-	authors: [{ name: 'GDG VIT Pune' }, {name: 'Aditya Bhattacharya'}, {name: 'Smrutikant Parida'}, {name: 'Vedant'},{name: 'Rachit'},{ name: 'Kabir Khanuja' }],
+	authors: [
+		{ name: 'GDG VIT Pune' },
+		{ name: 'Aditya Bhattacharya' },
+		{ name: 'Smrutikant Parida' },
+		{ name: 'Vedant Chandore' },
+		{ name: 'Rachit Ingole' },
+		{ name: 'Kabir Khanuja' },
+	],
 	creator: 'GDG VIT Pune',
 	publisher: 'GDG VIT Pune',
 	category: 'Technology',
@@ -61,7 +69,7 @@ export const metadata: Metadata = {
 			'Official website of Google Developer Groups (GDG) VIT Pune — events, projects, and community.',
 	},
 	alternates: {
-		canonical: '/',
+		canonical: 'https://gdgvitpune.com',
 	},
 }
 

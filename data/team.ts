@@ -81,16 +81,17 @@ export const teamMembers = [
 		},
 	},
 	{
-		image: '/kabirkhanuja.jpeg',
-		hoverImage: '/kabirkhanuja2.jpeg',
-		name: 'Kabir',
-		role: 'Co-Head of Cloud',
-		description: 'Bro thinks beyond gpt-d solutions',
-		social: {
-			linkedin: 'https://linkedin.com/in/kabirkhanuja',
-			github: 'https://github.com/KabirKhanuja',
-			instagram: 'https://www.instagram.com/kabirkhanuja/',
-		},
+	image: '/kabirkhanuja.jpeg',
+	hoverImage: '/kabirkhanuja2.jpeg',
+	name: 'Kabir',
+	seoName: 'Kabir Khanuja',
+	role: 'Co-Head of Cloud',
+	description: 'Bro thinks beyond gpt-d solutions (click or hover on the card)',
+	social: {
+		linkedin: 'https://linkedin.com/in/kabirkhanuja',
+		github: 'https://github.com/KabirKhanuja',
+		instagram: 'https://www.instagram.com/kabirkhanuja/',
+	},
 	},
 	{
 		image: '/Anush.jpg',

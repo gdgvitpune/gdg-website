@@ -39,6 +39,7 @@ export const galleryItems = [
 		image: '/mog.png',
 		title: 'Mogging',
 		description: 'Team Bonding',
+		alt: 'Sarvadnya, Aditya Bhattacharya, Kabir Khanuja',
 		category: 'Mog',
 	},
 ]

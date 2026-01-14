@@ -41,5 +41,6 @@ export const galleryItems = [
 		description: 'Team Bonding',
 		alt: 'Sarvadnya, Aditya Bhattacharya, Kabir Khanuja',
 		category: 'Mog',
+
 	},
 ]

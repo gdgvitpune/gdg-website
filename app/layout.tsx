@@ -29,10 +29,10 @@ export const metadata: Metadata = {
 		'VIT Pune',
 		'Google developer community',
 		'Kabir Khanuja',
-		'Kabir Khanuja GDG', // shameless self promo
-		'Kabir Khanuja VIT Pune', // shameless self promo
+		'Kabir Khanuja GDG', // shameless self promo (wrote it to abstract, kisi ko nahi dikh rha)
+		'Kabir Khanuja VIT Pune', // shameless self promo (wrote it to abstract, kisi ko nahi dikh rha)
 		'Aditya Bhattacharya VIT GDG',
-		'Aditya Bhattacharya', // baap baap hota hai
+		'Aditya Bhattacharya', // baap baap hota hai (aap ganje ho rahe ho papa)
 	],
 	authors: [
 		{ name: 'GDG VIT Pune' },

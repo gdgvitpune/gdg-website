@@ -30,7 +30,7 @@ export const galleryItems = [
 		category: 'Social',
 	},
 	{
-		image: '/team.jpeg',
+		image: 'https://res.cloudinary.com/da62knsgf/image/upload/v1768414115/IDG_20260113_184946_355_r8ieq4.jpg',
 		title: 'Bonding with the Team',
 		description: 'Connecting with clients across continents',
 		category: 'Growth',
@@ -39,6 +39,6 @@ export const galleryItems = [
 		image: '/mog.png',
 		title: 'Mogging',
 		description: 'Team Bonding',
-		category: 'Growth',
+		category: 'Mog',
 	},
 ]

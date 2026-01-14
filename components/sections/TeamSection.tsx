@@ -245,15 +245,17 @@ export function TeamSection() {
 								<p className="text-sm uppercase tracking-wider text-white/80 mb-4">
 									{member.role}
 								</p>
-								<p className="text-white/60 mb-6">
+								{/* TODO: UPDATE THIS SECTION WITH VALID DATA */}
+								{/* <p className="text-white/60 mb-6">
 									{member.description}
-								</p>
+								</p> */}
 
 								<div className="mt-auto flex items-end justify-between">
 									<div className="h-1 w-12 bg-white/30 rounded-full group-hover:w-24 transition-all" />
 
 									{/* icons */}
-									<div className="flex gap-3">
+									{/* TODO: HIDDEN SOCIAL LINKS FOR NOW, ADD CORRECT DATA AND THEN UNHIDE */}
+									{/* <div className="flex gap-3">
 										{[
 											{
 												Icon: Linkedin,
@@ -327,7 +329,7 @@ export function TeamSection() {
 												</a>
 											)
 										)}
-									</div>
+									</div> */}
 								</div>
 							</div>
 						</div>

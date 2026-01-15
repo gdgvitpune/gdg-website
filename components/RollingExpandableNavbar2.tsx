@@ -15,12 +15,14 @@ const navItems = [
 export default function ExpandableNavbar() {
 	const [isExpanded, setIsExpanded] = useState(false)
 	const [isClosing, setIsClosing] = useState(false)
+	const [moveLogo, setMoveLogo] = useState(false)
 
 	const leftItems = navItems.slice(0, 3)
 	const rightItems = navItems.slice(3)
 	const [hasClicked, setHasClicked] = useState(false)
 	const rotateTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 	const controls = useAnimation()
+	const logoRef = useRef<HTMLButtonElement | null>(null)
 
 	const handleClose = () => {
 		setIsClosing(true)
@@ -81,6 +83,49 @@ export default function ExpandableNavbar() {
 		}
 	}, [isExpanded, isClosing, hasClicked, controls])
 
+	useEffect(() => {
+		const onKey = (e: KeyboardEvent) => {
+			if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+				e.preventDefault()
+				console.log('Moving logo')
+				setMoveLogo((prev) => !prev)
+			}
+		}
+
+		const onHover = (e: MouseEvent) => {
+			if (!moveLogo) return
+			const el = logoRef.current
+			if (!el) return
+
+			el.getAnimations().forEach((a) => a.cancel())
+
+			const padding = 100
+
+			const cursorX = e.clientX
+			const cursorY = e.clientY
+
+			const randX = Math.floor(
+				Math.random() * (window.innerWidth - padding)
+			)
+
+			const randY = Math.floor(
+				Math.random() * (window.innerHeight - padding)
+			)
+
+			el.animate(
+				[
+					{ left: cursorX + 'px', top: cursorY + 'px' },
+					{ left: randX + 'px', top: randY + 'px' },
+				],
+				{ duration: 600, fill: 'forwards', easing: 'ease-in-out' }
+			)
+		}
+
+		window.addEventListener('keydown', onKey)
+		logoRef.current?.addEventListener('mouseenter', onHover)
+		return () => window.removeEventListener('keydown', onKey)
+	}, [moveLogo])
+
 	return (
 		<>
 			<div className="fixed top-[30px] left-0 w-full z-50 pointer-events-none hidden lg:block">
@@ -101,12 +146,18 @@ export default function ExpandableNavbar() {
 
 					<motion.button
 						onClick={handleToggle}
+						ref={(el) => {
+							logoRef.current = el
+						}}
 						className="absolute top-0 w-16 h-16 rounded-full bg-black flex items-center justify-center shadow-lg shadow-black/50 border-2 border-white/20 group z-10 pointer-events-auto"
-						animate={{
+						style={{
 							left:
 								isExpanded && !isClosing
 									? 'calc(50% - 32px)'
 									: '50px',
+							top: '0px',
+						}}
+						animate={{
 							rotate: isExpanded ? (isClosing ? 720 : 360) : 0,
 						}}
 						transition={{

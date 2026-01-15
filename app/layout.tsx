@@ -147,6 +147,10 @@ export default function RootLayout({
 						__html: JSON.stringify(adityaJsonLd),
 					}}
 				/>
+				<meta
+					name="google-site-verification"
+					content="nnNwKRZ6aA-BqKjqGj18UlS6Ro0C6uVkhRkUJ-4WP6Q"
+				/>
 			</head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}

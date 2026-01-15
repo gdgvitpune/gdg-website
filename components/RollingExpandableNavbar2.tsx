@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useAnimation } from 'framer-motion'
 
 const navItems = [
 	{ label: 'Home', href: '#home' },
@@ -18,6 +18,9 @@ export default function ExpandableNavbar() {
 
 	const leftItems = navItems.slice(0, 3)
 	const rightItems = navItems.slice(3)
+	const [hasClicked, setHasClicked] = useState(false)
+	const rotateTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+	const controls = useAnimation()
 
 	const handleClose = () => {
 		setIsClosing(true)
@@ -28,12 +31,55 @@ export default function ExpandableNavbar() {
 	}
 
 	const handleToggle = () => {
+		if (!hasClicked) setHasClicked(true)
 		if (isExpanded) {
 			handleClose()
 		} else {
 			setIsExpanded(true)
 		}
 	}
+
+	useEffect(() => {
+		// schedule wobble only when collapsed and not yet clicked
+		if (isExpanded || isClosing || hasClicked) {
+			if (rotateTimer.current) {
+				clearTimeout(rotateTimer.current)
+				rotateTimer.current = null
+			}
+			controls.stop()
+			return
+		}
+
+		let cancelled = false
+
+		const scheduleNext = () => {
+			const min = 2000
+			const max = 4000
+			const delay = Math.random() * (max - min) + min
+			rotateTimer.current = setTimeout(() => {
+				if (cancelled) return
+				const angle =
+					(Math.random() * 50 + 6) * (Math.random() > 0.5 ? 3 : -1) // 6–56 degrees
+				const duration = Math.random() * 0.4 + 0.5 // 0.5–0.9s
+				controls.start({
+					rotate: [0, angle, -angle, 0],
+					transition: { duration, ease: 'easeInOut' },
+				})
+				scheduleNext()
+			}, delay)
+		}
+
+		scheduleNext()
+
+		return () => {
+			cancelled = true
+			if (rotateTimer.current) {
+				clearTimeout(rotateTimer.current)
+				rotateTimer.current = null
+			}
+			controls.stop()
+		}
+	}, [isExpanded, isClosing, hasClicked, controls])
 
 	return (
 		<>
@@ -69,13 +115,18 @@ export default function ExpandableNavbar() {
 							delay: isClosing ? 0.7 : 0,
 						}}
 					>
-						<div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-all duration-300 ease-in-out cursor-pointer">
+						<motion.div
+							animate={controls}
+							initial={{ rotate: 0 }}
+							className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-all duration-300 ease-in-out cursor-pointer"
+							style={{ transformOrigin: '50% 50%' }}
+						>
 							<img
 								src="/gdg.png"
 								alt="GDG Logo"
 								className="w-15 h-7"
 							/>
-						</div>
+						</motion.div>
 					</motion.button>
 
 					<AnimatePresence>

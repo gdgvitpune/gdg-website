@@ -31,7 +31,7 @@ export const events: Event[] = [
 		id: 2,
 		title: 'Google Cloud StudyJams',
 		subtitle: 'Google Cloud learning series',
-		date: 'october, 2025',
+		date: 'OCT, 2025',
 		description:
 			'A month long series of workshops and hands-on labs focused on Google Cloud technologies, covering topics such as cloud fundamentals, data engineering, and machine learning on Google Cloud Platform.',
 		color: 'from-red-500 to-orange-500',

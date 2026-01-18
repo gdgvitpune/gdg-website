@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white selection:bg-orange-500 selection:text-white relative">
       {/* Galaxy Background - Fixed position covering entire viewport */}
-      <div className="fixed inset-0 w-full h-full z-0">
+      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
         <Galaxy
           mouseRepulsion={false}
           transparent={false}
@@ -36,7 +36,7 @@ export default function Home() {
 
       {/* Content - Positioned above the galaxy background */}
        <Hero />
-      <div className="relative z-10 pointer-events-none">
+      <div className="relative z-10">
         <Mission />
         <Events />
         <Projects />

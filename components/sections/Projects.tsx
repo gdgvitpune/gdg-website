@@ -144,7 +144,8 @@ export function Projects() {
   }, [])
 
   return (
-    <div id="achievements" className="relative min-h-screen">
+    <div id="projects" className="relative min-h-screen">
+      <div id="achievements" className="absolute left-0 top-0" aria-hidden="true" />
       <div ref={particlesRef} className="fixed top-0 left-0 w-full h-full z-0" />
 
       <section className="relative w-full z-10">

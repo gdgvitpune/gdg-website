@@ -147,9 +147,9 @@ export function Footer() {
 									<h4 className="font-medium text-white">
 										Email
 									</h4>
-									<p className="text-white text-md">
+									<a href="mailto:gdg@vit.edu" className="text-white text-md hover:text-red-500 transition-colors">
 										gdg@vit.edu
-									</p>
+									</a>
 								</div>
 							</div>
 						</div>

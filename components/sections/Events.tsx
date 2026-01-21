@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useRef, useState } from 'react'
-import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight, Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { events } from '@/data/events'
 import { cn } from '@/lib/utils'
 
@@ -230,18 +230,35 @@ export function Events() {
 															</div>
 														</div>
 
-														{/* TODO: MAKE THESE LINKS DYNAMIC */}
-														{/* <div className="flex gap-3">
-															<button className="flex-1 py-3 px-4 rounded-2xl border border-white/20 bg-white/5 backdrop-blur-lg text-white text-sm font-bold tracking-wider uppercase transition-all active:scale-95">
-																Register
-															</button>
-															<button className="flex-1 py-3 px-4 rounded-2xl border border-white/30 bg-white/10 backdrop-blur-lg text-white text-sm font-bold tracking-wider uppercase transition-all active:scale-95 flex items-center justify-center gap-2">
-																Details{' '}
-																<ArrowRight
-																	size={16}
-																/>
-															</button>
-														</div> */}
+														<div className="flex gap-3">
+															{event.registrationLink && (
+																<a
+																	href={
+																		event.registrationLink
+																	}
+																>
+																	<button className="flex-1 py-3 px-4 rounded-2xl border border-white/20 bg-white/5 backdrop-blur-lg text-white text-sm font-bold tracking-wider uppercase transition-all active:scale-95">
+																		Register
+																	</button>
+																</a>
+															)}
+															{event.detailsLink && (
+																<a
+																	href={
+																		event.detailsLink
+																	}
+																>
+																	<button className="flex-1 py-3 px-4 rounded-2xl border border-white/30 bg-white/10 backdrop-blur-lg text-white text-sm font-bold tracking-wider uppercase transition-all active:scale-95 flex items-center justify-center gap-2">
+																		Details{' '}
+																		<ArrowRight
+																			size={
+																				16
+																			}
+																		/>
+																	</button>
+																</a>
+															)}
+														</div>
 													</div>
 												</div>
 											</div>
@@ -464,16 +481,36 @@ export function Events() {
 												{events[activeIndex].date}
 											</span>
 										</div>
-										{/* TODO: MAKE THESE DYNAMIC AND UNHIDE THEM */}
 
-										{/* <div className="flex gap-3">
-											<button className="flex-1 py-2 md:py-3 px-3 md:px-4 rounded-2xl border border-white/20 bg-white/5 backdrop-blur-lg text-white text-sm font-bold tracking-wider uppercase transition-all hover:bg-white/10 hover:border-white/50 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-												Register
-											</button>
-											<button className="flex-1 py-2 md:py-3 px-3 md:px-4 rounded-2xl border border-white/30 bg-white/10 backdrop-blur-lg text-white text-sm font-bold tracking-wider uppercase transition-all hover:bg-white/15 hover:border-white/60 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] flex items-center justify-center gap-2">
-												Details <ArrowRight size={16} />
-											</button>
-										</div> */}
+										<div className="flex gap-3">
+											{events[activeIndex]
+												.registrationLink && (
+												<a
+													href={
+														events[activeIndex]
+															.registrationLink
+													}
+												>
+													<button className="flex-1 py-2 md:py-3 px-3 md:px-4 rounded-2xl border border-white/20 bg-white/5 backdrop-blur-lg text-white text-sm font-bold tracking-wider uppercase transition-all hover:bg-white/10 hover:border-white/50 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+														Register
+													</button>
+												</a>
+											)}
+											{events[activeIndex]
+												.detailsLink && (
+												<a
+													href={
+														events[activeIndex]
+															.detailsLink
+													}
+												>
+													<button className="flex-1 py-2 md:py-3 px-3 md:px-4 rounded-2xl border border-white/30 bg-white/10 backdrop-blur-lg text-white text-sm font-bold tracking-wider uppercase transition-all hover:bg-white/15 hover:border-white/60 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] flex items-center justify-center gap-2">
+														Details{' '}
+														<ArrowRight size={16} />
+													</button>
+												</a>
+											)}
+										</div>
 									</div>
 								</div>
 							</div>

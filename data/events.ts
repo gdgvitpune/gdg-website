@@ -10,6 +10,8 @@ type Event = {
 	participants: string
 	location: string
 	status: 'DONE' | 'UPCOMING'
+	registrationLink?: string
+	detailsLink?: string
 }
 
 export const events: Event[] = [
@@ -26,6 +28,8 @@ export const events: Event[] = [
 		participants: '1000+',
 		location: 'Seminar Hall',
 		status: 'DONE',
+		registrationLink: '',
+		detailsLink: '',
 	},
 	{
 		id: 2,
@@ -40,6 +44,8 @@ export const events: Event[] = [
 		participants: '100+',
 		location: 'Online',
 		status: 'DONE',
+		registrationLink: '',
+		detailsLink: '',
 	},
 	{
 		id: 3,
@@ -54,6 +60,8 @@ export const events: Event[] = [
 		participants: '1000+',
 		location: '1325-1328 Bibwewadi Campus',
 		status: 'DONE',
+		registrationLink: '',
+		detailsLink: '',
 	},
 	{
 		id: 4,
@@ -68,6 +76,8 @@ export const events: Event[] = [
 		participants: '300+',
 		location: '1325-1328 Bibwewadi Campus',
 		status: 'DONE',
+		registrationLink: '',
+		detailsLink: '',
 	},
 	{
 		id: 5,
@@ -82,6 +92,8 @@ export const events: Event[] = [
 		participants: '700+',
 		location: '1325-1328 Bibwewadi Campus',
 		status: 'DONE',
+		registrationLink: '',
+		detailsLink: '',
 	},
 	{
 		id: 6,
@@ -96,5 +108,7 @@ export const events: Event[] = [
 		participants: '400+',
 		location: '1325-1328 Bibwewadi Campus',
 		status: 'DONE',
+		registrationLink: '',
+		detailsLink: '',
 	},
 ]

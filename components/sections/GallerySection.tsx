@@ -48,9 +48,9 @@ export function GallerySection() {
 		const track = trackRef.current
 		if (!section || !track) return
 
-		let gsap: any
-		let ScrollTrigger: any
-		let ctx: any
+		let gsap: GSAP
+		let ScrollTrigger: typeof import('gsap/ScrollTrigger').ScrollTrigger
+		let ctx: gsap.Context
 
 		const initAnimation = async () => {
 			const gsapModule = await import('gsap')
@@ -82,7 +82,7 @@ export function GallerySection() {
 			gsap.registerPlugin(ScrollTrigger)
 
 			const findScrollParent = (
-				element: HTMLElement | null
+				element: HTMLElement | null,
 			): HTMLElement | Window => {
 				if (!element) return window
 				const style = getComputedStyle(element)
@@ -115,10 +115,10 @@ export function GallerySection() {
 							scrollContainer === window
 								? undefined
 								: scrollContainer,
-						onUpdate: (self: any) => {
+						onUpdate: (self) => {
 							const progress = self.progress
 							const index = Math.round(
-								progress * (galleryItems.length - 1)
+								progress * (galleryItems.length - 1),
 							)
 							setActiveIndex(index)
 						},

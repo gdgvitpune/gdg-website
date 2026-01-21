@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { Github, Linkedin, Instagram } from 'lucide-react'
+// import { Github, Linkedin, Instagram } from 'lucide-react'
 import { teamMembers } from '@/data/team'
 import Lenis from 'lenis'
 
@@ -55,7 +55,7 @@ export function TeamSection() {
 		const track = trackRef.current
 		if (!section || !track) return
 
-		let ctx: any
+		let ctx: gsap.Context
 
 		const init = async () => {
 			const { gsap } = await import('gsap')
@@ -132,7 +132,7 @@ export function TeamSection() {
 									window.innerWidth < 768
 								) {
 									setActiveCard(
-										activeCard === index ? null : index
+										activeCard === index ? null : index,
 									)
 								}
 							}}

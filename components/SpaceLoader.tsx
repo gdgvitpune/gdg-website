@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import React, { useState } from 'react'
 
 // Reusable SpaceLoader Component
@@ -28,7 +29,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
 	React.useEffect(() => {
 		const check = () =>
 			setIsMobile(
-				typeof window !== 'undefined' && window.innerWidth <= 768
+				typeof window !== 'undefined' && window.innerWidth <= 768,
 			)
 		check()
 		window.addEventListener('resize', check)
@@ -56,7 +57,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
 		}, duration)
 
 		return () => clearTimeout(t)
-	}, [isMobile, duration])
+	}, [isMobile, duration, onComplete])
 
 	return (
 		<div className="fixed inset-0 overflow-hidden bg-black">
@@ -68,7 +69,8 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
 				{/* Mobile: simple progress bar with starry background */}
 				{isMobile ? (
 					<div className="absolute inset-0 z-0 flex items-center justify-center">
-						<img
+						<Image
+							fill
 							src="/space.gif"
 							alt="Starry background"
 							className="w-full h-full object-cover"
@@ -79,7 +81,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
 						<div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
 							<div className="mobile-loader w-11/12 max-w-sm mx-auto text-center">
 								<div className="star-row mb-1">
-									<img
+									<Image
 										src="/ship.png"
 										alt="Loading star"
 										className="w-50 h-70 mx-auto rotate-90"
@@ -107,7 +109,8 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
 						{/* Space GIF Background - Shows until video plays */}
 						{!showVideo && (
 							<div className="absolute inset-0 z-0">
-								<img
+								<Image
+									fill
 									src="/space.gif"
 									alt="Space background"
 									className="w-full h-full object-cover"
@@ -131,7 +134,8 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
 
 						{/* Cockpit PNG Overlay - Always visible */}
 						<div className="absolute inset-0 z-10 pointer-events-none">
-							<img
+							<Image
+								fill
 								src="/spaceship.png"
 								alt="Cockpit"
 								className="w-full h-full object-cover scale-105"
@@ -215,7 +219,7 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
 												onClick={handleMissionStart}
 												className="terminal-text text-[#a9c7a9] text-[8px] bg-transparent border-2 border-[#a9c7a9] px-6 py-2 hover:bg-[#a9c7a9] hover:text-black transition-all duration-200 cursor-pointer uppercase tracking-wider"
 											>
-												[ LET'S GO ]
+												[ LET&apos;S GO ]
 											</button>
 										</div>
 									</div>
@@ -277,7 +281,8 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
 
 				/* Mobile loader visuals */
 				.mobile-stars {
-					background-image: radial-gradient(
+					background-image:
+						radial-gradient(
 							rgba(255, 255, 255, 0.18) 1px,
 							transparent 1px
 						),
@@ -285,8 +290,12 @@ const SpaceLoader = ({ onComplete, duration = 3000 }: SpaceLoaderProps) => {
 							rgba(255, 255, 255, 0.12) 1px,
 							transparent 1px
 						);
-					background-position: 0 0, 40px 60px;
-					background-size: 80px 80px, 120px 120px;
+					background-position:
+						0 0,
+						40px 60px;
+					background-size:
+						80px 80px,
+						120px 120px;
 					opacity: 0.8;
 					mix-blend-mode: screen;
 				}

@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useRef, useState } from 'react'
-import { Calendar, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { events } from '@/data/events'
 import { cn } from '@/lib/utils'
 
@@ -102,7 +103,7 @@ export function Events() {
 
 	const handleDotClick = (
 		e: React.MouseEvent | React.TouchEvent,
-		index: number
+		index: number,
 	) => {
 		e.stopPropagation()
 		setActiveIndex(index)
@@ -363,7 +364,7 @@ export function Events() {
 													<div className="absolute bottom-0 left-0 right-0 p-4">
 														<div className="text-xs text-white/60 font-bold tracking-widest mb-1">
 															{String(
-																index + 1
+																index + 1,
 															).padStart(2, '0')}
 															.
 														</div>
@@ -404,7 +405,7 @@ export function Events() {
 											'grid gap-6 pt-6 border-t border-white/10',
 											events[activeIndex].experience
 												? 'grid-cols-3'
-												: 'grid-cols-2'
+												: 'grid-cols-2',
 										)}
 									>
 										{events[activeIndex].experience && (

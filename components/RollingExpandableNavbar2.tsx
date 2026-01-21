@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useAnimation } from 'framer-motion'
+import Image from 'next/image'
 
 const navItems = [
 	{ label: 'Home', href: '#home' },
@@ -105,11 +106,11 @@ export default function ExpandableNavbar() {
 			const cursorY = e.clientY
 
 			const randX = Math.floor(
-				Math.random() * (window.innerWidth - padding)
+				Math.random() * (window.innerWidth - padding),
 			)
 
 			const randY = Math.floor(
-				Math.random() * (window.innerHeight - padding)
+				Math.random() * (window.innerHeight - padding),
 			)
 
 			el.animate(
@@ -117,7 +118,7 @@ export default function ExpandableNavbar() {
 					{ left: cursorX + 'px', top: cursorY + 'px' },
 					{ left: randX + 'px', top: randY + 'px' },
 				],
-				{ duration: 600, fill: 'forwards', easing: 'ease-in-out' }
+				{ duration: 600, fill: 'forwards', easing: 'ease-in-out' },
 			)
 		}
 
@@ -172,7 +173,9 @@ export default function ExpandableNavbar() {
 							className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-all duration-300 ease-in-out cursor-pointer"
 							style={{ transformOrigin: '50% 50%' }}
 						>
-							<img
+							<Image
+								width={10}
+								height={10}
 								src="/gdg.png"
 								alt="GDG Logo"
 								className="w-15 h-7"
@@ -222,7 +225,7 @@ export default function ExpandableNavbar() {
 													? (leftItems.length -
 															1 -
 															index) *
-													  0.08
+														0.08
 													: 0.5 + index * 0.08,
 												duration: 0.2,
 											}}
@@ -264,7 +267,7 @@ export default function ExpandableNavbar() {
 													? (rightItems.length -
 															1 -
 															index) *
-													  0.08
+														0.08
 													: 0.5 + index * 0.08,
 												duration: 0.2,
 											}}

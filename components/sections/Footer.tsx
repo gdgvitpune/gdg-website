@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import { motion } from 'framer-motion'
-import { Github, Twitter, Linkedin, Instagram, Mail, Phone } from 'lucide-react'
+import { Github, Twitter, Linkedin, Instagram, Mail } from 'lucide-react'
 
 export function Footer() {
 	const currentYear = new Date().getFullYear()
@@ -147,7 +148,10 @@ export function Footer() {
 									<h4 className="font-medium text-white">
 										Email
 									</h4>
-									<a href="mailto:gdg@vit.edu" className="text-white text-md hover:text-red-500 transition-colors">
+									<a
+										href="mailto:gdg@vit.edu"
+										className="text-white text-md hover:text-red-500 transition-colors"
+									>
 										gdg@vit.edu
 									</a>
 								</div>

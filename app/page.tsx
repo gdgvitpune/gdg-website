@@ -8,6 +8,7 @@ import { Events } from '@/components/sections/Events';
 import { TeamSection } from '@/components/sections/TeamSection';
 import { Projects } from '@/components/sections/Projects';
 import { GallerySection } from '@/components/sections/GallerySection';
+import { Newsletter } from '@/components/sections/Newsletter';
 import { Footer } from '@/components/sections/Footer';
 
 export default function Home() {
@@ -42,6 +43,7 @@ export default function Home() {
         <Projects />
         <TeamSection />
         <GallerySection />
+        <Newsletter />
         <Footer />
       </div>
     </main>

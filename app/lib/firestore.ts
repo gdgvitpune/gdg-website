@@ -31,18 +31,21 @@ export async function addSubscriber(email: string) {
       id: docRef.id,
       message: 'Successfully subscribed!',
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error adding subscriber:', error);
     
     // Check for specific Firebase errors
-    if (error?.code === 'permission-denied' || error?.message?.includes('PERMISSION_DENIED')) {
+    const errorMessage = error instanceof Error ? error.message : '';
+    const errorCode = (error as { code?: string })?.code;
+    
+    if (errorCode === 'permission-denied' || errorMessage.includes('PERMISSION_DENIED')) {
       return {
         success: false,
         error: 'Database is not properly configured. Please contact support.',
       };
     }
     
-    if (error?.message?.includes('Cloud Firestore API has not been used')) {
+    if (errorMessage.includes('Cloud Firestore API has not been used')) {
       return {
         success: false,
         error: 'Service is currently unavailable. Please try again later.',

@@ -1,8 +1,9 @@
+// components/sections/Newsletter.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { Send, Rocket, Sparkles, Star } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Send, Rocket, Sparkles } from 'lucide-react';
 
 export function Newsletter() {
     const [email, setEmail] = useState('');
@@ -202,7 +203,7 @@ export function Newsletter() {
                                 { label: 'Events', value: '20+', delay: 0.6 },
                                 { label: 'Active Members', value: '100+', delay: 0.7 },
                                 { label: 'Projects', value: '10+', delay: 0.8 }
-                            ].map((stat, index) => (
+                            ].map((stat) => (
                                 <motion.div
                                     key={stat.label}
                                     className="glass rounded-lg px-4 py-2 hover:bg-white/10 transition-all cursor-default group"

@@ -284,108 +284,108 @@ export function Newsletter() {
                                     </div>
 
                                     <motion.button
-                                        ref={buttonRef}
-                                        type="submit"
-                                        disabled={isLaunching}
-                                        className="w-full bg-gradient-to-r from-green-600/80 to-emerald-600/80 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-4 rounded-xl shadow-lg shadow-green-500/20 hover:shadow-green-500/40 transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden disabled:opacity-80"
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.4 }}
-                                        whileHover={!isLaunching ? { scale: 1.02, y: -2 } : {}}
-                                        whileTap={!isLaunching ? { scale: 0.98 } : {}}
-                                        onHoverStart={() => !isLaunching && setIsHovered(true)}
-                                        onHoverEnd={() => setIsHovered(false)}
-                                    >
-                                        {/* Rocket animation inside button */}
-                                        {isLaunching && (
-                                            <>
-                                                <motion.div
-                                                    className="absolute left-0 top-1/2 -translate-y-1/2 z-30"
-                                                    initial={{ x: -50, rotate: 45 }}
-                                                    animate={{ x: '110vw', rotate: 45 }}
-                                                    transition={{ 
-                                                        duration: 1.5, 
-                                                        ease: [0.34, 1.56, 0.64, 1]
-                                                    }}
-                                                >
-                                                    <Rocket className="w-8 h-8 text-white drop-shadow-lg" fill="currentColor" />
-                                                    {/* Enhanced rocket flame trail */}
-                                                    <motion.div
-                                                        className="absolute -bottom-2 -left-1 w-6 h-10"
-                                                        style={{
-                                                            background: 'linear-gradient(to bottom, rgba(251,191,36,0.9), rgba(249,115,22,0.9), rgba(239,68,68,0.7))',
-                                                            filter: 'blur(4px)',
-                                                            borderRadius: '50%',
-                                                        }}
-                                                        animate={{
-                                                            opacity: [0.8, 1, 0.8],
-                                                            scale: [0.9, 1.3, 0.9],
-                                                            scaleY: [1, 1.5, 1]
-                                                        }}
-                                                        transition={{
-                                                            duration: 0.2,
-                                                            repeat: Infinity,
-                                                            ease: "easeInOut"
-                                                        }}
-                                                    />
-                                                    {/* Smoke particles */}
-                                                    {[...Array(3)].map((_, i) => (
-                                                        <motion.div
-                                                            key={i}
-                                                            className="absolute w-2 h-2 bg-gray-400/40 rounded-full blur-sm"
-                                                            style={{
-                                                                left: -8 - i * 4,
-                                                                top: 4,
-                                                            }}
-                                                            animate={{
-                                                                opacity: [0.6, 0, 0],
-                                                                scale: [0.5, 1.5, 0],
-                                                                x: [-10, -30],
-                                                                y: [0, 10]
-                                                            }}
-                                                            transition={{
-                                                                duration: 0.5,
-                                                                delay: i * 0.1,
-                                                                repeat: Infinity,
-                                                                ease: "easeOut"
-                                                            }}
-                                                        />
-                                                    ))}
-                                                </motion.div>
-                                            </>
-                                        )}
+    ref={buttonRef}
+    type="submit"
+    disabled={isLaunching}
+    className="w-full bg-white hover:bg-gray-100 text-green-600 font-semibold py-4 rounded-xl shadow-lg shadow-green-500/20 hover:shadow-green-500/40 transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden disabled:opacity-80"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.4 }}
+    whileHover={!isLaunching ? { scale: 1.02, y: -2 } : {}}
+    whileTap={!isLaunching ? { scale: 0.98 } : {}}
+    onHoverStart={() => !isLaunching && setIsHovered(true)}
+    onHoverEnd={() => setIsHovered(false)}
+>
+    {/* Rocket animation inside button */}
+    {isLaunching && (
+        <>
+            <motion.div
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-30"
+                initial={{ x: -50, rotate: 45 }}
+                animate={{ x: '110vw', rotate: 45 }}
+                transition={{ 
+                    duration: 1.5, 
+                    ease: [0.34, 1.56, 0.64, 1]
+                }}
+            >
+                <Rocket className="w-8 h-8 text-green-600 drop-shadow-lg" fill="currentColor" />
+                {/* Enhanced rocket flame trail */}
+                <motion.div
+                    className="absolute -bottom-2 -left-1 w-6 h-10"
+                    style={{
+                        background: 'linear-gradient(to bottom, rgba(251,191,36,0.9), rgba(249,115,22,0.9), rgba(239,68,68,0.7))',
+                        filter: 'blur(4px)',
+                        borderRadius: '50%',
+                    }}
+                    animate={{
+                        opacity: [0.8, 1, 0.8],
+                        scale: [0.9, 1.3, 0.9],
+                        scaleY: [1, 1.5, 1]
+                    }}
+                    transition={{
+                        duration: 0.2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+                {/* Smoke particles */}
+                {[...Array(3)].map((_, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute w-2 h-2 bg-gray-400/40 rounded-full blur-sm"
+                        style={{
+                            left: -8 - i * 4,
+                            top: 4,
+                        }}
+                        animate={{
+                            opacity: [0.6, 0, 0],
+                            scale: [0.5, 1.5, 0],
+                            x: [-10, -30],
+                            y: [0, 10]
+                        }}
+                        transition={{
+                            duration: 0.5,
+                            delay: i * 0.1,
+                            repeat: Infinity,
+                            ease: "easeOut"
+                        }}
+                    />
+                ))}
+            </motion.div>
+        </>
+    )}
 
-                                        <span className="relative z-10 font-bold tracking-wide">
-                                            {isLaunching ? 'Launching...' : 'Join the Community'}
-                                        </span>
-                                        {!isLaunching && (
-                                            <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:rotate-12 transition-transform" />
-                                        )}
-                                        
-                                        {/* Shimmer effect on hover */}
-                                        {isHovered && !isLaunching && (
-                                            <motion.div
-                                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                                                initial={{ x: '-100%' }}
-                                                animate={{ x: '200%' }}
-                                                transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 0.5 }}
-                                            />
-                                        )}
+    <span className="relative z-10 font-bold tracking-wide">
+        {isLaunching ? 'Launching...' : 'Join the Community'}
+    </span>
+    {!isLaunching && (
+        <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:rotate-12 transition-transform" />
+    )}
+    
+    {/* Shimmer effect on hover */}
+    {isHovered && !isLaunching && (
+        <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-green-200/50 to-transparent"
+            initial={{ x: '-100%' }}
+            animate={{ x: '200%' }}
+            transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 0.5 }}
+        />
+    )}
 
-                                        {/* Pulsing glow effect */}
-                                        <motion.div
-                                            className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-xl blur-xl"
-                                            animate={{
-                                                opacity: isHovered ? [0.5, 0.8, 0.5] : 0,
-                                                scale: isHovered ? [1, 1.1, 1] : 1
-                                            }}
-                                            transition={{
-                                                duration: 2,
-                                                repeat: Infinity,
-                                                ease: "easeInOut"
-                                            }}
-                                        />
-                                    </motion.button>
+    {/* Pulsing glow effect */}
+    <motion.div
+        className="absolute inset-0 bg-green-400/20 rounded-xl blur-xl"
+        animate={{
+            opacity: isHovered ? [0.5, 0.8, 0.5] : 0,
+            scale: isHovered ? [1, 1.1, 1] : 1
+        }}
+        transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+        }}
+    />
+</motion.button>
 
                                     <motion.p 
                                         className="text-xs text-gray-400 text-center"

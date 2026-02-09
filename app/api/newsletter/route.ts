@@ -1,65 +1,31 @@
 // app/api/newsletter/route.ts
+// app/api/newsletter/route.ts
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import { NextRequest, NextResponse } from 'next/server';
 import { addSubscriber } from '@/app/lib/firestore';
+import { checkRateLimit } from '@/app/lib/ratelimit';
 
-
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-
-
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
-const MAX_REQUESTS = 3; // 3 requests per minute
+const MAX_REQUESTS = 3;
 
 function getRateLimitKey(request: NextRequest): string {
-  
   const forwarded = request.headers.get('x-forwarded-for');
   const ip = forwarded ? forwarded.split(',')[0] : request.headers.get('x-real-ip') || 'unknown';
-  return ip;
+  return `newsletter:${ip}`;
 }
 
-function checkRateLimit(key: string): { allowed: boolean; remaining: number; resetTime: number } {
-  const now = Date.now();
-  const record = rateLimitMap.get(key);
-
-
-  if (record && now > record.resetTime) {
-    rateLimitMap.delete(key);
-  }
-
-  const currentRecord = rateLimitMap.get(key);
-
-  if (!currentRecord) {
-    
-    rateLimitMap.set(key, {
-      count: 1,
-      resetTime: now + RATE_LIMIT_WINDOW,
-    });
-    return { allowed: true, remaining: MAX_REQUESTS - 1, resetTime: now + RATE_LIMIT_WINDOW };
-  }
-
-  if (currentRecord.count >= MAX_REQUESTS) {
-    // Rate limit exceeded
-    return {
-      allowed: false,
-      remaining: 0,
-      resetTime: currentRecord.resetTime,
-    };
-  }
-
-  // Increment count
-  currentRecord.count++;
-  rateLimitMap.set(key, currentRecord);
-
-  return {
-    allowed: true,
-    remaining: MAX_REQUESTS - currentRecord.count,
-    resetTime: currentRecord.resetTime,
-  };
+export async function GET() {
+  return NextResponse.json(
+    { error: 'Method not allowed' },
+    { status: 405 }
+  );
 }
 
 export async function POST(request: NextRequest) {
-  // Check rate limit
   const rateLimitKey = getRateLimitKey(request);
-  const rateLimit = checkRateLimit(rateLimitKey);
+  const rateLimit = await checkRateLimit(rateLimitKey);
 
   if (!rateLimit.allowed) {
     const secondsUntilReset = Math.ceil((rateLimit.resetTime - Date.now()) / 1000);

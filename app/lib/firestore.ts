@@ -31,17 +31,20 @@ export async function addSubscriber(email: string) {
       id: docRef.id,
       message: 'Successfully subscribed!',
     };
-  } catch (error: unknown) {
+ } catch (error: unknown) {
     console.error('Error adding subscriber:', error);
     
-    // Check for specific Firebase errors
     const errorMessage = error instanceof Error ? error.message : '';
     const errorCode = (error as { code?: string })?.code;
     
-    if (errorCode === 'permission-denied' || errorMessage.includes('PERMISSION_DENIED')) {
+    // Log the actual error for debugging
+    console.log('Error code:', errorCode);
+    console.log('Error message:', errorMessage);
+    
+    if (errorCode === 'permission-denied') {
       return {
         success: false,
-        error: 'Database is not properly configured. Please contact support.',
+        error: 'Permission denied. Firestore rules are blocking writes.',
       };
     }
     
@@ -56,5 +59,4 @@ export async function addSubscriber(email: string) {
       success: false,
       error: 'Failed to subscribe. Please try again.',
     };
-  }
-}
+  }}

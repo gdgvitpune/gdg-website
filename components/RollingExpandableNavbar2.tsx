@@ -151,19 +151,13 @@ export default function ExpandableNavbar() {
 							logoRef.current = el
 						}}
 						className="absolute top-0 w-16 h-16 rounded-full bg-black flex items-center justify-center shadow-lg shadow-black/50 border-2 border-white/20 group z-10 pointer-events-auto"
-						style={{
-							left:
-								isExpanded && !isClosing
-									? 'calc(50% - 32px)'
-									: '50px',
-							top: '0px',
-						}}
 						animate={{
+							left: isExpanded && !isClosing ? "calc(50% - 32px)" : "50px",
 							rotate: isExpanded ? (isClosing ? 720 : 360) : 0,
 						}}
 						transition={{
 							duration: 0.5,
-							ease: 'easeInOut',
+							ease: "easeInOut",
 							delay: isClosing ? 0.7 : 0,
 						}}
 					>

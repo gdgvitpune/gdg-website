@@ -4,10 +4,20 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-const projects = [
+type Project = {
+	label: string
+	title: string
+	titleColor: string
+	description: string
+	items: string[]
+	visual: string
+}
+
+const projects: Project[] = [
 	{
-		label: 'Achievements',
-		title: 'Hack-O-Verse',
+		label: 'hack-o-verse',
+		title: 'Hack-o-Verse',
+		titleColor: '#4285F4',
 		description:
 			'Secured India-wide Rank #1 while hosting an open-innovation hackathon with a ₹20K prize pool and nationwide participation.',
 		items: [
@@ -18,8 +28,9 @@ const projects = [
 		visual: '/hov.png',
 	},
 	{
-		label: 'Achievements',
+		label: 'cloud-jams',
 		title: 'Google Cloud Study Jams',
+		titleColor: '#DB4437',
 		description:
 			"Recognized as a Tier-1 amongst all GDG's for exceptional participation and successful cloud skill completions.",
 		items: [
@@ -31,8 +42,9 @@ const projects = [
 		visual: '/gc.png',
 	},
 	{
-		label: 'Achievements',
+		label: 'create-thon',
 		title: 'Create-A-Thon',
+		titleColor: '#F9AB00',
 		description:
 			'Organized an AI short-film competition with a ₹50K+ prize pool, encouraging creativity through AI-powered storytelling.',
 		items: [
@@ -44,8 +56,9 @@ const projects = [
 		visual: '/create.png',
 	},
 	{
-		label: 'Achievements',
+		label: 'tensor-fiesta',
 		title: 'Tensor Fiesta Hackathon',
+		titleColor: '#0F9D58',
 		description:
 			'Conducted an AI & ML hackathon featuring a ₹25K+ prize pool with multiple competitive tracks.',
 		items: [
@@ -57,6 +70,11 @@ const projects = [
 		visual: '/tensorfiesta.jpg',
 	},
 ]
+
+function titleGlow(color: string) {
+	// subtle glow 
+	return `0 0 30px ${color}66`
+}
 
 export function Projects() {
 	const containerRef = useRef<HTMLDivElement>(null)
@@ -177,14 +195,20 @@ export function Projects() {
 							}}
 						>
 							<div className="p-6 sm:p-10 md:p-20 h-auto md:h-64">
-								<div className="text-sm sm:text-base font-medium mb-2 sm:mb-4 opacity-70 uppercase tracking-widest text-white">
+							<div
+								className="text-sm sm:text-base font-medium mb-2 sm:mb-4 uppercase tracking-widest"
+								style={{
+									color: project.titleColor,
+									textShadow: titleGlow(project.titleColor),
+								}}
+							>
 									{project.label}
 								</div>
 								<h2
-									className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight text-white"
+									className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight"
 									style={{
-										textShadow:
-											'0 0 30px rgba(255, 255, 255, 0.3)',
+										color: project.titleColor,
+										textShadow: titleGlow(project.titleColor),
 									}}
 								>
 									{project.title}

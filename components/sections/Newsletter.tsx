@@ -5,7 +5,11 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Rocket, Sparkles } from 'lucide-react';
 
-export function Newsletter() {
+interface NewsletterProps {
+  onHoverChange?: (isHovered: boolean) => void;
+}
+
+export function Newsletter({ onHoverChange }: NewsletterProps) {
     const [email, setEmail] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
@@ -293,8 +297,16 @@ export function Newsletter() {
     transition={{ delay: 0.4 }}
     whileHover={!isLaunching ? { scale: 1.02, y: -2 } : {}}
     whileTap={!isLaunching ? { scale: 0.98 } : {}}
-    onHoverStart={() => !isLaunching && setIsHovered(true)}
-    onHoverEnd={() => setIsHovered(false)}
+    onHoverStart={() => {
+      if (!isLaunching) {
+        setIsHovered(true);
+        onHoverChange?.(true);
+      }
+    }}
+    onHoverEnd={() => {
+      setIsHovered(false);
+      onHoverChange?.(false);
+    }}
 >
     {/* Rocket animation inside button */}
     {isLaunching && (

@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useMemo } from 'react'
 import { ArrowRight, Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { events } from '@/data/events'
 import { cn } from '@/lib/utils'
+import { generateRandomColorSequence } from '@/lib/colorUtils'
 
 export function Events() {
 	const [scrollProgress, setScrollProgress] = useState(0)
@@ -11,6 +12,9 @@ export function Events() {
 	const [isMobile, setIsMobile] = useState(false)
 	const touchStartX = useRef(0)
 	const touchEndX = useRef(0)
+
+	// it'll generate random colors on mount ensuring no adj colors are the same
+	const eventColors = useMemo(() => generateRandomColorSequence(events.length), [])
 
 	useEffect(() => {
 		const checkMobile = () => setIsMobile(window.innerWidth < 1024)
@@ -158,7 +162,7 @@ export function Events() {
 											pointerEvents: 'auto',
 										}}
 									>
-										{events.map((event) => (
+										{events.map((event, eventIndex) => (
 											<div
 												key={event.id}
 												className="w-full flex-shrink-0 px-4"
@@ -177,7 +181,7 @@ export function Events() {
 													<div className="absolute bottom-0 left-0 right-0 p-6">
 													<h1 
 														className="text-4xl font-black mb-2 leading-tight"
-														style={{ color: event.titleColor }}
+														style={{ color: eventColors[eventIndex] }}
 													>
 															{event.title}
 														</h1>
@@ -405,7 +409,7 @@ export function Events() {
 									<div className="flex items-center gap-3 mb-6"></div>
 
 									<h1 className="text-2xl md:text-5xl font-black mb-3 leading-tight"
-										style={{ color: events[activeIndex].titleColor }}
+										style={{ color: eventColors[activeIndex] }}
 									>
 										{events[activeIndex].title}
 									</h1>

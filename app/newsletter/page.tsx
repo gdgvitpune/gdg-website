@@ -11,7 +11,7 @@ export default function NewsletterPage() {
   const [mascotEmotion, setMascotEmotion] = useState<'neutral' | 'happy' | 'success' | 'sad'>('neutral');
 
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-orange-500 selection:text-white relative overflow-hidden">
+    <main className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* GIF Background */}
       <div className="fixed inset-0 w-full h-full z-0">
         <div 

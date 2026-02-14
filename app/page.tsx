@@ -19,7 +19,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-orange-500 selection:text-white relative">
+    <main className="min-h-screen bg-black text-white relative">
       {/* Galaxy Background - Fixed position covering entire viewport */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
         <Galaxy

@@ -1,23 +1,22 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { generateRandomColorSequence, createColorGlow } from '@/lib/colorUtils'
 
 type Project = {
 	label: string
 	title: string
-	titleColor: string
 	description: string
 	items: string[]
 	visual: string
 }
 
-const projects: Project[] = [
+const projectsData: Project[] = [
 	{
 		label: 'hack-o-verse',
 		title: 'Hack-o-Verse',
-		titleColor: '#4285F4',
 		description:
 			'Secured India-wide Rank #1 while hosting an open-innovation hackathon with a ₹20K prize pool and nationwide participation.',
 		items: [
@@ -30,7 +29,6 @@ const projects: Project[] = [
 	{
 		label: 'cloud-jams',
 		title: 'Google Cloud Study Jams',
-		titleColor: '#DB4437',
 		description:
 			"Recognized as a Tier-1 amongst all GDG's for exceptional participation and successful cloud skill completions.",
 		items: [
@@ -44,7 +42,6 @@ const projects: Project[] = [
 	{
 		label: 'create-thon',
 		title: 'Create-A-Thon',
-		titleColor: '#F9AB00',
 		description:
 			'Organized an AI short-film competition with a ₹50K+ prize pool, encouraging creativity through AI-powered storytelling.',
 		items: [
@@ -58,7 +55,6 @@ const projects: Project[] = [
 	{
 		label: 'tensor-fiesta',
 		title: 'Tensor Fiesta Hackathon',
-		titleColor: '#0F9D58',
 		description:
 			'Conducted an AI & ML hackathon featuring a ₹25K+ prize pool with multiple competitive tracks.',
 		items: [
@@ -71,15 +67,13 @@ const projects: Project[] = [
 	},
 ]
 
-function titleGlow(color: string) {
-	// subtle glow 
-	return `0 0 30px ${color}66`
-}
-
 export function Projects() {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const cardsRef = useRef<HTMLDivElement[]>([])
 	const particlesRef = useRef<HTMLDivElement>(null)
+
+	// itll generate random colors on mount ensuring no adj colors are the same
+	const projectColors = useMemo(() => generateRandomColorSequence(projectsData.length), [])
 
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger)
@@ -177,7 +171,9 @@ export function Projects() {
 					ref={containerRef}
 					className="relative h-screen w-full overflow-hidden"
 				>
-					{projects.map((project, index) => (
+					{projectsData.map((project, index) => {
+						const projectColor = projectColors[index]
+						return (
 						<div
 							key={index}
 							ref={(el) => {
@@ -198,8 +194,8 @@ export function Projects() {
 							<div
 								className="text-sm sm:text-base font-medium mb-2 sm:mb-4 uppercase tracking-widest"
 								style={{
-									color: project.titleColor,
-									textShadow: titleGlow(project.titleColor),
+									color: projectColor,
+									textShadow: createColorGlow(projectColor),
 								}}
 							>
 									{project.label}
@@ -207,8 +203,8 @@ export function Projects() {
 								<h2
 									className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight"
 									style={{
-										color: project.titleColor,
-										textShadow: titleGlow(project.titleColor),
+										color: projectColor,
+										textShadow: createColorGlow(projectColor),
 									}}
 								>
 									{project.title}
@@ -262,7 +258,8 @@ export function Projects() {
 								</div>
 							</div>
 						</div>
-					))}
+					)
+					})}
 				</div>
 			</section>
 		</div>

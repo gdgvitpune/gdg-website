@@ -3,13 +3,15 @@
 import { motion } from 'framer-motion'
 import { Github, Twitter, Linkedin, Instagram, Mail } from 'lucide-react'
 
-export function Footer() {
+export function Footer({ isNewsletterPage = false }: { isNewsletterPage?: boolean }) {
 	const currentYear = new Date().getFullYear()
 
 	return (
 		<footer
 			id="contact"
-			className="relative overflow-hidden bg-black pt-20 shadow-[0px_-17px_20px_2px_#00000024]"
+			className={`relative overflow-hidden pt-20 shadow-[0px_-17px_20px_2px_#00000024] ${
+				isNewsletterPage ? 'bg-black/80' : 'bg-black'
+			}`}
 		>
 			{/* Background image layer */}
 			<img
@@ -32,7 +34,9 @@ export function Footer() {
 			/>
 
 			{/* Main footer content */}
-			<div className="px-10 container mx-auto sm:px-4 sm:px-6 lg:px-8 rounded-[3rem] glass p-10 shadow-xl">
+			<div className={`px-10 container mx-auto sm:px-4 sm:px-6 lg:px-8 rounded-[3rem] glass p-10 shadow-xl ${
+				isNewsletterPage ? 'backdrop-blur-sm bg-black/95' : ''
+			}`}>
 				<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-11 gap-8 md:gap-12 mb-12 ">
 					{/* Brand and mission */}
 					<div className="md:col-span-1 lg:col-span-5">

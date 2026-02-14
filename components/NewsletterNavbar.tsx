@@ -1,0 +1,236 @@
+'use client'
+
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useAnimation } from 'framer-motion'
+import Image from 'next/image'
+import Link from 'next/link'
+
+const navItems = [
+	{ label: 'Home', href: '/' },
+	{ label: 'Newsletter', href: '/newsletter' },
+]
+
+export default function NewsletterNavbar() {
+	const [isExpanded, setIsExpanded] = useState(false) // Start closed by default
+	const [isClosing, setIsClosing] = useState(false)
+	const [moveLogo, setMoveLogo] = useState(false)
+	const [hasClicked, setHasClicked] = useState(false)
+	const rotateTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+	const controls = useAnimation()
+	const logoRef = useRef<HTMLButtonElement | null>(null)
+
+	const handleClose = () => {
+		setIsClosing(true)
+		setTimeout(() => {
+			setIsExpanded(false)
+			setIsClosing(false)
+		}, 1200)
+	}
+
+	const handleToggle = () => {
+		if (!hasClicked) setHasClicked(true)
+		if (isExpanded) {
+			handleClose()
+		} else {
+			setIsExpanded(true)
+		}
+	}
+
+	useEffect(() => {
+		// schedule wobble only when collapsed and not yet clicked
+		if (isExpanded || isClosing || hasClicked) {
+			if (rotateTimer.current) {
+				clearTimeout(rotateTimer.current)
+				rotateTimer.current = null
+			}
+			controls.stop()
+			return
+		}
+
+		let cancelled = false
+
+		const scheduleNext = () => {
+			const min = 2000
+			const max = 4000
+			const delay = Math.random() * (max - min) + min
+			rotateTimer.current = setTimeout(() => {
+				if (cancelled) return
+				const angle =
+					(Math.random() * 50 + 6) * (Math.random() > 0.5 ? 3 : -1) // 6–56 degrees
+				const duration = Math.random() * 0.4 + 0.5 // 0.5–0.9s
+				controls.start({
+					rotate: [0, angle, -angle, 0],
+					transition: { duration, ease: 'easeInOut' },
+				})
+				scheduleNext()
+			}, delay)
+		}
+
+		scheduleNext()
+
+		return () => {
+			cancelled = true
+			if (rotateTimer.current) {
+				clearTimeout(rotateTimer.current)
+				rotateTimer.current = null
+			}
+			controls.stop()
+		}
+	}, [isExpanded, isClosing, hasClicked, controls])
+
+	useEffect(() => {
+		const onKey = (e: KeyboardEvent) => {
+			if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+				e.preventDefault()
+				console.log('Moving logo')
+				setMoveLogo((prev) => !prev)
+			}
+		}
+
+		const onHover = (e: MouseEvent) => {
+			if (!moveLogo) return
+			const el = logoRef.current
+			if (!el) return
+
+			el.getAnimations().forEach((a) => a.cancel())
+
+			const padding = 100
+
+			const cursorX = e.clientX
+			const cursorY = e.clientY
+
+			const randX = Math.floor(
+				Math.random() * (window.innerWidth - padding),
+			)
+
+			const randY = Math.floor(
+				Math.random() * (window.innerHeight - padding),
+			)
+
+			el.animate(
+				[
+					{ left: cursorX + 'px', top: cursorY + 'px' },
+					{ left: randX + 'px', top: randY + 'px' },
+				],
+				{ duration: 600, fill: 'forwards', easing: 'ease-in-out' },
+			)
+		}
+
+		window.addEventListener('keydown', onKey)
+		logoRef.current?.addEventListener('mouseenter', onHover)
+		return () => window.removeEventListener('keydown', onKey)
+	}, [moveLogo])
+
+	return (
+		<>
+			<div className="fixed top-[30px] left-0 w-full z-50 pointer-events-none hidden lg:block">
+				<div className="relative w-full h-16">
+
+					<motion.button
+						onClick={handleToggle}
+						ref={(el) => {
+							logoRef.current = el
+						}}
+						className="absolute top-0 w-16 h-16 rounded-full bg-black flex items-center justify-center shadow-lg shadow-black/50 border-2 border-white/20 group z-10 pointer-events-auto"
+						animate={{
+							left: "50px", // Stay on the left, don't move to center
+							rotate: isExpanded ? (isClosing ? 720 : 360) : 0,
+						}}
+						transition={{
+							duration: 0.5,
+							ease: "easeInOut",
+							delay: isClosing ? 0.7 : 0,
+						}}
+					>
+						<motion.div
+							animate={controls}
+							initial={{ rotate: 0 }}
+							className="relative z-10 w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-gray-600 transition-all duration-300 ease-in-out cursor-pointer"
+							style={{ transformOrigin: '50% 50%' }}
+						>
+							<Image
+								width={10}
+								height={10}
+								src="/gdg.png"
+								alt="GDG Logo"
+								className="w-15 h-7"
+							/>
+						</motion.div>
+					</motion.button>
+
+					<AnimatePresence>
+						{isExpanded && (
+							<motion.div
+								className="absolute top-0 left-20 flex items-center pointer-events-auto"
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+								transition={{
+									duration: 0.2,
+									delay: isClosing ? 0.9 : 0.3,
+								}}
+							>
+								{/* Right menu only - expands to the right of logo */}
+								<motion.div
+									initial={{ width: 0, opacity: 0 }}
+									animate={{
+										width: isClosing ? 0 : 'auto',
+										opacity: isClosing ? 0 : 1,
+									}}
+									exit={{ width: 0, opacity: 0 }}
+									transition={{
+										duration: isClosing ? 0.6 : 0.4,
+										ease: 'easeInOut',
+										delay: isClosing ? 0.25 : 0.4,
+									}}
+									className="flex items-center gap-2 bg-black/60 backdrop-blur-md rounded-full translate-y-1 h-15 px-6 py-3 border border-white/10 overflow-hidden"
+								>
+									{navItems.map((item, index) => (
+										<motion.div
+											key={item.label}
+											initial={{ opacity: 0, x: 20 }}
+											animate={{
+												opacity: isClosing ? 0 : 1,
+												x: isClosing ? 30 : 0,
+											}}
+											exit={{ opacity: 0, x: 20 }}
+											transition={{
+												delay: isClosing
+													? (navItems.length - 1 - index) * 0.08
+													: 0.5 + index * 0.08,
+												duration: 0.2,
+											}}
+										>
+											<Link
+												href={item.href}
+												className={`px-4 py-2 transition-all duration-300 text-sm font-medium whitespace-nowrap rounded-full hover:bg-white hover:text-black ${
+													item.href === '/newsletter' ? 'text-orange-500' : 'text-white'
+												}`}
+												onClick={handleClose}
+											>
+												{item.label}
+											</Link>
+										</motion.div>
+									))}
+								</motion.div>
+							</motion.div>
+						)}
+					</AnimatePresence>
+				</div>
+			</div>
+
+			{/* Backdrop overlay */}
+			<AnimatePresence>
+				{isExpanded && (
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: isClosing ? 0 : 1 }}
+						exit={{ opacity: 0 }}
+						className="fixed inset-0 bg-black/10 z-40"
+						onClick={handleClose}
+					/>
+				)}
+			</AnimatePresence>
+		</>
+	)
+}

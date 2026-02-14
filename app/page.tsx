@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SpaceLoader from '@/components/SpaceLoader';
 import Galaxy from '@/components/Galaxy';
 import { Hero } from '@/components/sections/Hero';
@@ -12,7 +12,20 @@ import { Newsletter } from '@/components/sections/Newsletter';
 import { Footer } from '@/components/sections/Footer';
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    // will check once if user has used the loader in ts session 
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem('hasSeenLoader');
+    }
+    return true;
+  });
+
+  useEffect(() => {
+    // marking that user has seen the loader
+    if (!isLoading && typeof window !== 'undefined') {
+      sessionStorage.setItem('hasSeenLoader', 'true');
+    }
+  }, [isLoading]);
 
   if (isLoading) {
     return <SpaceLoader onComplete={() => setIsLoading(false)} duration={3500} />;

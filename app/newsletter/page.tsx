@@ -51,7 +51,7 @@ export default function NewsletterPage() {
           </section>
         </div>
       </div>
-      <Footer />
+      <Footer isNewsletterPage={true} />
     </main>
   );
 }

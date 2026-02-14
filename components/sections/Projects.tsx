@@ -1,13 +1,22 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useMemo } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { generateRandomColorSequence, createColorGlow } from '@/lib/colorUtils'
 
-const projects = [
+type Project = {
+	label: string
+	title: string
+	description: string
+	items: string[]
+	visual: string
+}
+
+const projectsData: Project[] = [
 	{
-		label: 'Achievements',
-		title: 'Hack-O-Verse',
+		label: 'hack-o-verse',
+		title: 'Hack-o-Verse',
 		description:
 			'Secured India-wide Rank #1 while hosting an open-innovation hackathon with a ₹20K prize pool and nationwide participation.',
 		items: [
@@ -18,7 +27,7 @@ const projects = [
 		visual: '/hov.png',
 	},
 	{
-		label: 'Achievements',
+		label: 'cloud-jams',
 		title: 'Google Cloud Study Jams',
 		description:
 			"Recognized as a Tier-1 amongst all GDG's for exceptional participation and successful cloud skill completions.",
@@ -31,7 +40,7 @@ const projects = [
 		visual: '/gc.png',
 	},
 	{
-		label: 'Achievements',
+		label: 'create-thon',
 		title: 'Create-A-Thon',
 		description:
 			'Organized an AI short-film competition with a ₹50K+ prize pool, encouraging creativity through AI-powered storytelling.',
@@ -44,7 +53,7 @@ const projects = [
 		visual: '/create.png',
 	},
 	{
-		label: 'Achievements',
+		label: 'tensor-fiesta',
 		title: 'Tensor Fiesta Hackathon',
 		description:
 			'Conducted an AI & ML hackathon featuring a ₹25K+ prize pool with multiple competitive tracks.',
@@ -62,6 +71,9 @@ export function Projects() {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const cardsRef = useRef<HTMLDivElement[]>([])
 	const particlesRef = useRef<HTMLDivElement>(null)
+
+	// itll generate random colors on mount ensuring no adj colors are the same
+	const projectColors = useMemo(() => generateRandomColorSequence(projectsData.length), [])
 
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger)
@@ -159,7 +171,9 @@ export function Projects() {
 					ref={containerRef}
 					className="relative h-screen w-full overflow-hidden"
 				>
-					{projects.map((project, index) => (
+					{projectsData.map((project, index) => {
+						const projectColor = projectColors[index]
+						return (
 						<div
 							key={index}
 							ref={(el) => {
@@ -177,14 +191,20 @@ export function Projects() {
 							}}
 						>
 							<div className="p-6 sm:p-10 md:p-20 h-auto md:h-64">
-								<div className="text-sm sm:text-base font-medium mb-2 sm:mb-4 opacity-70 uppercase tracking-widest text-white">
+							<div
+								className="text-sm sm:text-base font-medium mb-2 sm:mb-4 uppercase tracking-widest"
+								style={{
+									color: projectColor,
+									textShadow: createColorGlow(projectColor),
+								}}
+							>
 									{project.label}
 								</div>
 								<h2
-									className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight text-white"
+									className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight"
 									style={{
-										textShadow:
-											'0 0 30px rgba(255, 255, 255, 0.3)',
+										color: projectColor,
+										textShadow: createColorGlow(projectColor),
 									}}
 								>
 									{project.title}
@@ -238,7 +258,8 @@ export function Projects() {
 								</div>
 							</div>
 						</div>
-					))}
+					)
+					})}
 				</div>
 			</section>
 		</div>

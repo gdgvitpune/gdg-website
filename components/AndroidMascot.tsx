@@ -19,19 +19,24 @@ export default function AndroidMascot({ isHappy = false, emotion = 'neutral' }: 
 
   // Persist success emotion once it's triggered
   useEffect(() => {
-    if (emotion === 'success' && persistentEmotion !== 'success') {
-      setPersistentEmotion('success');
-    } else if (emotion === 'sad' && persistentEmotion !== 'success') {
-      // Don't override success with sad
-      setPersistentEmotion('sad');
-      // Reset sad emotion after 3 seconds
-      const timeout = setTimeout(() => {
-        setPersistentEmotion('neutral');
-      }, 3000);
-      return () => clearTimeout(timeout);
-    } else if (emotion !== 'success' && emotion !== 'sad' && persistentEmotion !== 'success') {
-      setPersistentEmotion(emotion);
-    }
+    // Use a timer to defer state updates
+    const timer = setTimeout(() => {
+      if (emotion === 'success' && persistentEmotion !== 'success') {
+        setPersistentEmotion('success');
+      } else if (emotion === 'sad' && persistentEmotion !== 'success') {
+        // Don't override success with sad
+        setPersistentEmotion('sad');
+        // Reset sad emotion after 3 seconds
+        const timeout = setTimeout(() => {
+          setPersistentEmotion('neutral');
+        }, 3000);
+        return () => clearTimeout(timeout);
+      } else if (emotion !== 'success' && emotion !== 'sad' && persistentEmotion !== 'success') {
+        setPersistentEmotion(emotion);
+      }
+    }, 0);
+    
+    return () => clearTimeout(timer);
   }, [emotion, persistentEmotion]);
 
   // Cute random blinking

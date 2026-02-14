@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useMemo } from 'react'
 import { ArrowRight, Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { events } from '@/data/events'
 import { cn } from '@/lib/utils'
+import { generateRandomColorSequence } from '@/lib/colorUtils'
 
 export function Events() {
 	const [scrollProgress, setScrollProgress] = useState(0)
@@ -11,6 +12,9 @@ export function Events() {
 	const [isMobile, setIsMobile] = useState(false)
 	const touchStartX = useRef(0)
 	const touchEndX = useRef(0)
+
+	// it'll generate random colors on mount ensuring no adj colors are the same
+	const eventColors = useMemo(() => generateRandomColorSequence(events.length), [])
 
 	useEffect(() => {
 		const checkMobile = () => setIsMobile(window.innerWidth < 1024)
@@ -158,7 +162,7 @@ export function Events() {
 											pointerEvents: 'auto',
 										}}
 									>
-										{events.map((event) => (
+										{events.map((event, eventIndex) => (
 											<div
 												key={event.id}
 												className="w-full flex-shrink-0 px-4"
@@ -175,7 +179,10 @@ export function Events() {
 													<div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
 
 													<div className="absolute bottom-0 left-0 right-0 p-6">
-														<h1 className="text-4xl font-black mb-2 text-white leading-tight">
+													<h1 
+														className="text-4xl font-black mb-2 leading-tight"
+														style={{ color: eventColors[eventIndex] }}
+													>
 															{event.title}
 														</h1>
 														<p className="text-lg italic font-light text-white/70 mb-4 uppercase">
@@ -401,7 +408,9 @@ export function Events() {
 								<div className="relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-3xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]">
 									<div className="flex items-center gap-3 mb-6"></div>
 
-									<h1 className="text-2xl md:text-5xl font-black mb-3 text-white leading-tight">
+									<h1 className="text-2xl md:text-5xl font-black mb-3 leading-tight"
+										style={{ color: eventColors[activeIndex] }}
+									>
 										{events[activeIndex].title}
 									</h1>
 									<p className="text-sm md:text-lg italic font-light text-white/70 mb-6 uppercase">

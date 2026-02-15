@@ -15,7 +15,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(() => {
     // will check once if user has used the loader in ts session 
     if (typeof window !== 'undefined') {
-      return !sessionStorage.getItem('hasSeenLoader');
+      return !localStorage.getItem('hasSeenLoader');
     }
     return true;
   });
@@ -23,9 +23,47 @@ export default function Home() {
   useEffect(() => {
     // marking that user has seen the loader
     if (!isLoading && typeof window !== 'undefined') {
-      sessionStorage.setItem('hasSeenLoader', 'true');
+      try {
+        localStorage.setItem('hasSeenLoader', 'true');
+      } catch (e) {
+      }
     }
   }, [isLoading]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const OPEN_TABS_KEY = 'gdg_open_tabs';
+
+    const safeParse = (v: string | null) => {
+      const n = parseInt(v || '0', 10);
+      return Number.isFinite(n) ? n : 0;
+    };
+
+    try {
+      const cur = safeParse(localStorage.getItem(OPEN_TABS_KEY));
+      localStorage.setItem(OPEN_TABS_KEY, String(cur + 1));
+    } catch (e) {
+    }
+
+    const handleBeforeUnload = () => {
+      try {
+        const cur = safeParse(localStorage.getItem(OPEN_TABS_KEY));
+        const next = Math.max(0, cur - 1);
+        localStorage.setItem(OPEN_TABS_KEY, String(next));
+        if (next === 0) {
+          localStorage.removeItem('hasSeenLoader');
+        }
+      } catch (e) {
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   if (isLoading) {
     return <SpaceLoader onComplete={() => setIsLoading(false)} duration={3500} />;

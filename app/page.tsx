@@ -11,19 +11,38 @@ import { GallerySection } from '@/components/sections/GallerySection';
 import { Newsletter } from '@/components/sections/Newsletter';
 import { Footer } from '@/components/sections/Footer';
 
+const HOME_LOADER_STORAGE_KEY = 'hasSeenLoader';
+
+declare global {
+  interface Window {
+    __gdgCurrentPathname?: string;
+    __gdgPreviousPathname?: string;
+  }
+}
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState(() => {
-    // will check once if user has used the loader in ts session 
+    // itll play the intro on full page loads, but skip it for clientside returns
+    // to the homepage after it has already been seen in any tab
     if (typeof window !== 'undefined') {
-      return !sessionStorage.getItem('hasSeenLoader');
+      const isClientSideReturn =
+        typeof window.__gdgCurrentPathname === 'string' &&
+        window.__gdgCurrentPathname !== '/';
+
+      if (!isClientSideReturn) {
+        return true;
+      }
+
+      return !localStorage.getItem(HOME_LOADER_STORAGE_KEY);
     }
+
     return true;
   });
 
   useEffect(() => {
-    // marking that user has seen the loader
+    // will mark that the intro has been seen for clientside navigations in any tab
     if (!isLoading && typeof window !== 'undefined') {
-      sessionStorage.setItem('hasSeenLoader', 'true');
+      localStorage.setItem(HOME_LOADER_STORAGE_KEY, 'true');
     }
   }, [isLoading]);
 

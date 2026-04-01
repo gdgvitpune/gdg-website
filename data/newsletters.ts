@@ -37,6 +37,19 @@ export const newsletters: Newsletter[] = [
 		tags: ['Open Source', 'GenAI', 'Career'],
 		color: 'from-red-500 to-orange-400',
 	},
+	{
+		id: 3,
+		slug: 'edition-3',
+		title: 'The Startup Edition',
+		description:
+			'The ideas, the grit, and the stories that prove big things often start small - from student founders who built something meaningful right out of college, to legendary ventures that reshaped entire industries.',
+		date: 'APR 2026',
+		edition: 'Edition 3',
+		driveLink:
+			'https://drive.google.com/file/d/1GNBaSs6nFNqo6e5OfBIPE7tkvrcjucM0/view?usp=sharing',
+		tags: ['Startups', 'Entrepreneurship'],
+		color: 'from-green-500 to-slate-500',
+	},
 ]
 
 export function getDriveEmbedUrl(driveLink: string): string {
